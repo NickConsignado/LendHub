@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 
 
 function SignUpPage () {
-    const [confirmPassword, setConfirmPassword] = useState();
-    const [username, setUsername] = useState();
-    const [fullName, setFullName] = useState();
-    const [email, setEmail] = useState();
+    // const [confirmPassword, setConfirmPassword] = useState();
+    // const [username, setUsername] = useState();
+    // const [fullName, setFullName] = useState();
+    // const [email, setEmail] = useState();
 
 
 //   function checkPasswordMatch() {
@@ -24,6 +24,8 @@ function SignUpPage () {
 
     return (
         <>
+        <div className="container mt-5"></div>
+        <div className="container mt-5 pt-lg-5"></div>
         <div className="container">
         <div className="container col-lg-4">
           <form className="px-4 py-3">
@@ -90,7 +92,7 @@ function SignUpPage () {
                 id="confirmPasswordInput"
                 placeholder="Password"
                 required
-                onBlur={setConfirmPassword()}
+                // onBlur={setConfirmPassword()}
               />
             </div>
 

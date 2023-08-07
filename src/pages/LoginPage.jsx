@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 function LoginPage() {
   return (
     <>
+    <div className="container mt-5"></div>
+   <div className="container mt-5 pt-lg-5"></div>
+    <div className="container mt-5 pt-5">
       <div className="container">
         <div className="container col-lg-4">
           <form className="px-4 py-3">
@@ -43,17 +46,28 @@ function LoginPage() {
             </div>
 
             <div className="text-center">
+              <Link to="/home">
                 <button type="submit" className="btn btn-primary w-100">
                   Login
                 </button>
+              </Link>
             </div>
-              <div className="dropdown-divider my-2"></div>
+            <div className="dropdown-divider my-2"></div>
             <div className="d-flex justify-content-center">
-            <p>No Account yet?</p><span><Link to="/sign-up" className="dropdown-item text-center" href="#"><b> Sign up here</b></Link></span>
+              <p>No Account yet?</p>
+              <span>
+                <Link
+                  to="/sign-up"
+                  className="dropdown-item text-center"
+                  href="#"
+                >
+                  <b> Sign up here</b>
+                </Link>
+              </span>
             </div>
-
           </form>
         </div>
+      </div>  
       </div>
     </>
   );
