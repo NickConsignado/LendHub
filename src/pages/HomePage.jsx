@@ -1,4 +1,4 @@
-import Books from "../components/books.jsx";
+import BookDetails from "../components/BookDetails";
 import NavBar from "../components/NavBar.jsx";
 
 function HomePage() {
@@ -20,9 +20,11 @@ function HomePage() {
             ></div>
           </div>
           <div className="container col-10 mt-5 pt-5">
-            <Books />
-            <Books />
-            <Books />
+            <BookDetails />
+            <hr />
+            <BookDetails />
+            <hr />
+            <BookDetails />
           </div>
         </div>
       </div>
