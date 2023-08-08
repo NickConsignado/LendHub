@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Books() {
+function BooksDetails() {
   return (
     <>
       <div className="card" style={{ width: "30rem" }}>
@@ -28,4 +28,4 @@ function Books() {
   );
 }
 
-export default Books;
+export default BooksDetails;

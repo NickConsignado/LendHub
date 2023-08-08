@@ -1,14 +1,14 @@
-import Books from "../components/books";
+import BookDetails from "../components/BookDetails";
 
 function HomePage() {
   return (
     <>
     <div className="container mt-5 pt-5">
-      <Books/>
+      <BookDetails/>
       <hr />
-      <Books/>
+      <BookDetails/>
       <hr />
-      <Books/>
+      <BookDetails/>
     </div>
 
     </>
