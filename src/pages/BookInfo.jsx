@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 function BookInfo() {
   return (
     <>
+    <Link to="/"><button className="btn btn-primary">Go back</button></Link>
       <main className="w-100 d-flex flex-column align-items-center mt-5">
         <div className="container d-flex flex-wrap row justify-content-center">
           <img
@@ -69,19 +72,20 @@ function BookInfo() {
               </p>
 
               <h5>Characters</h5>
-              <p>Ron Weasley, Petunia Dursley, Vernon Dursley, Dudley Dursley, Severus Snape, Quirinus Quirrell, Rubeus Hagrid, Lord Voldemort, Minerva McGonagall, Neville Longbottom, Fred Weasley, George Weasley, Percy Weasley, Filius Flitwick, Pomona Sprout, Molly Weasley, Poppy Pomfrey, Oliver Wood, Parvati Patil, Dean Thomas, James Potter, Lily Potter, Seamus Finnigan, Garrick Ollivander, Rolanda Hooch, Katie Bell, Draco Malfoy, Albus Dumbledore, Dedalus Diggle, Harry Potter, Hermione Granger, Lavender Brown</p>
+              <p>
+                Ron Weasley, Petunia Dursley, Vernon Dursley, Dudley Dursley,
+                Severus Snape, Quirinus Quirrell, Rubeus Hagrid, Lord Voldemort,
+                Minerva McGonagall, Neville Longbottom, Fred Weasley, George
+                Weasley, Percy Weasley, Filius Flitwick, Pomona Sprout, Molly
+                Weasley, Poppy Pomfrey, Oliver Wood, Parvati Patil, Dean Thomas,
+                James Potter, Lily Potter, Seamus Finnigan, Garrick Ollivander,
+                Rolanda Hooch, Katie Bell, Draco Malfoy, Albus Dumbledore,
+                Dedalus Diggle, Harry Potter, Hermione Granger, Lavender Brown
+              </p>
             </div>
           </ul>
         </div>
 
-        <div className="mt-5 ">
-          <span>
-            <button className="btn btn-primary">Borrow</button>{" "}
-          </span>
-          <span>
-            <button className="btn btn-danger">Return</button>
-          </span>
-        </div>
       </main>
     </>
   );
