@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import LOGO  from "../assets/LOGOCAPSTONE.png"
 
 function Footer() {
   return (
@@ -7,7 +8,7 @@ function Footer() {
       <div className="container mt-5 pt-5 text-white">
         <div className="row">
           <div className="col-5">
-            <h2>Logo</h2>
+            <h2> <img src={LOGO} width={200}/></h2>
             <p>LendHub is the largest marketplace for users resources,
                 powered by a community of educators.
             </p> 
