@@ -12,10 +12,10 @@ function Footer() {
                 powered by a community of educators.
             </p> 
             <div className="d-flex justify-content-evenly pt-5">
-            <i class="fa-brands fa-facebook fa-xl"></i>   
-            <i class="fa-brands fa-instagram fa-xl"></i>  
-            <i class="fa-brands fa-pinterest fa-xl"></i> 
-            <i class="fa-brands fa-twitter fa-xl"></i> 
+            <i className="fa-brands fa-facebook fa-xl"></i>   
+            <i className="fa-brands fa-instagram fa-xl"></i>  
+            <i className="fa-brands fa-pinterest fa-xl"></i> 
+            <i className="fa-brands fa-twitter fa-xl"></i> 
             </div>  
           </div>  
       
