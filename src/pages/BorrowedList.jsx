@@ -17,15 +17,26 @@ function BorrowedList() {
     setReturnDate('');
     setNameOfBook('');   
   };
- 
-  
+
   return (
     <>
       <div className="container table table-striped mt-5">
         <form className="form ">
-          <button type="button" className="btn-add" onClick={addRow}>
-            Add
-          </button>
+        <div class="row g-3">
+          <div class="col">
+              <input type="text" className="form-control" placeholder="Name" aria-label="name" />
+            </div>
+            <div class="col">
+              <input type="text" className="form-control" placeholder="Borrowed Date" aria-label="Borrowed Date" />
+            </div>
+            <div class="col">
+              <input type="text" className="form-control" placeholder="Return Date" aria-label="Return Date" />
+            </div>
+            <div class="col">
+              <input type="text" className="form-control" placeholder="Name Of Book" aria-label="Name Of Book" />
+            </div>
+            <button type="button" className="btn-add" onClick={addRow}>Add</button>  
+          </div>     
         </form>
         <table className="table container table table-striped border mt-5">
           <thead>
@@ -37,11 +48,11 @@ function BorrowedList() {
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, index) => (
-              <tr key={index}>
+            {rows.map((row) => (
+              <tr key={row}>
                 <td>{row.borrowedBy}Wanda</td>
-                <td>{row.borrowedDate}Aug, 10, 2023</td>
-                <td>{row.returnDate}</td>
+                <td>{row.borrowedDate}july, 10, 2023</td>
+                <td>{row.returnDate}Aug, 10, 2023</td>
                 <td>{row.nameOfBook}Harry Potter</td>
               </tr>
             ))}
