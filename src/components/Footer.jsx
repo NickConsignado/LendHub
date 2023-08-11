@@ -14,17 +14,17 @@ function Footer() {
             <div className="col-5">
               <h2>
                 {" "}
-                <img src={logo} alt="Lend Hub Logo" />
+                <img src={LOGO} width={200} />
               </h2>
               <p>
                 LendHub is the largest marketplace for users resources, powered
                 by a community of educators.
               </p>
               <div className="d-flex justify-content-evenly pt-5">
-                <i className="fa-brands fa-facebook fa-xl"></i>
-                <i className="fa-brands fa-instagram fa-xl"></i>
-                <i className="fa-brands fa-pinterest fa-xl"></i>
-                <i className="fa-brands fa-twitter fa-xl"></i>
+                <i class="fa-brands fa-facebook fa-xl"></i>
+                <i class="fa-brands fa-instagram fa-xl"></i>
+                <i class="fa-brands fa-pinterest fa-xl"></i>
+                <i class="fa-brands fa-twitter fa-xl"></i>
               </div>
             </div>
 
@@ -47,7 +47,7 @@ function Footer() {
             <div className="col-3">
               <h2>UPDATES</h2>
               <p>
-                Get our weekly newsletter with free resoures, updates, and
+                Get our weekly newslatter with free resoures, updates, and
                 special offers.
               </p>
             </div>
