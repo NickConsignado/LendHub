@@ -1,14 +1,15 @@
 import React from "react";
+import SignIn from "./SignIn.jsx";
 
 function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <div className="row justify-content-between align-items-center w-100">
-          <div className="col-10">
+          <div className="col-9">
             <div className="navbar-brand">Navbar</div>
           </div>
-          <div className="col-2">
+          <div className="col-3">
             <div
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
@@ -24,6 +25,9 @@ function NavBar() {
                   Search
                 </button>
               </form>
+              <div>
+                <SignIn />
+              </div>
             </div>
           </div>
         </div>
