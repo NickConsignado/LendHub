@@ -21,11 +21,12 @@
     "@mui/styled-engine-sc": "^5.12.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "5.2.3",
+    "font-awesome": "^4.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
     "sass": "^1.64.2",
-    "styled-components": "^6.0.7"
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
