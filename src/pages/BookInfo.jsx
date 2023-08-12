@@ -48,7 +48,7 @@ function BookInfo() {
                 Nevada Young Readers' Award for Young Reader Category (2000),
                 Golden Archer Award for Middle/Junior High (2000), Indian
                 Paintbrush Book Award (2000), Hotze de Roosprijs (2002), Nestlé
-                Smarties Book Prize for 9–11 years (1997), Eliot Rosewater
+                Smarties Book Prize for 9-11 years (1997), Eliot Rosewater
                 Indiana High School Book Award (2001), Kinderboekwinkelprijs
                 (1999), Parenting Book of the Year Award (1998), North East
                 Teenage Book Award (1999), Specsavers National Book Award for

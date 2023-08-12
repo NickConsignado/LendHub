@@ -4,6 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function MultiActionAreaCard() {
   return (
@@ -27,7 +28,7 @@ function MultiActionAreaCard() {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          View more
+          <Link to="/book-info" style={{textDecoration: "none"}}>View more</Link>
         </Button>
       </CardActions>
     </Card>
