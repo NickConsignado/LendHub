@@ -2,12 +2,16 @@ import React from "react";
 import { Grid, Card } from "@mui/material";
 import MultiActionAreaCard from "../components/Books.jsx";
 import NavBar from "../components/NavBar.jsx";
+import SearchBar from "../components/SearchBar.jsx";
+
 
 function HomePage() {
   return (
     <>
       <NavBar />
-
+      <div>
+      <SearchBar />
+      </div>
       <div className="container-fluid text-center">
         <div className="row">
           {/* sort */}
