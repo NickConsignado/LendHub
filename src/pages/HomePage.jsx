@@ -3,6 +3,8 @@ import { Grid, Card } from "@mui/material";
 import MultiActionAreaCard from "../components/Books.jsx";
 import NavBar from "../components/NavBar.jsx";
 import SearchBar from "../components/SearchBar.jsx";
+import "./HomePage.scss";
+import Carousel from "../components/Carousel.jsx";
 
 function HomePage() {
   return (
@@ -25,6 +27,7 @@ function HomePage() {
           </div>
           {/* cards */}
           <div className="container col-9 mt-5 pt-5">
+            <Carousel />
             <Grid
               container
               spacing={0.5}
@@ -32,6 +35,7 @@ function HomePage() {
                 display: "grid",
                 gridTemplateColumns: "repeat(4, 1fr)",
                 padding: "1rem",
+                boxShadow: "0 2rem 3rem rgba(000, 0.175);",
               }}
             >
               <div>

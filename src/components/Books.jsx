@@ -12,8 +12,8 @@ function MultiActionAreaCard() {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image="https://th.bing.com/th/id/OIP.e1H7N8JV9C6kKS4goIvxFwHaLz?w=192&h=307&c=7&r=0&o=5&pid=1.7"
+          height="240"
+          image="https://covers.openlibrary.org/b/id/10716377-L.jpg"
           alt="green iguana"
         />
         <CardContent>
@@ -28,7 +28,9 @@ function MultiActionAreaCard() {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          <Link to="/book-info" style={{textDecoration: "none"}}>View more</Link>
+          <Link to="/book-info" style={{ textDecoration: "none" }}>
+            View more
+          </Link>
         </Button>
       </CardActions>
     </Card>

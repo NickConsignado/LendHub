@@ -1,0 +1,7 @@
+$black: #000;
+$box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
+
+.Card {
+  box-shadow: $box-shadow-lg;
+  /* other card styling */
+}
