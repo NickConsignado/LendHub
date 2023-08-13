@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,7 +40,7 @@ function SignIn() {
           horizontal: "left",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <Link to="/borrowed-list" style={{textDecoration: "none", color:"black"}}><MenuItem onClick={handleClose}>Book List</MenuItem></Link>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>
