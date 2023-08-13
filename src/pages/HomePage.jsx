@@ -4,13 +4,12 @@ import MultiActionAreaCard from "../components/Books.jsx";
 import NavBar from "../components/NavBar.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 
-
 function HomePage() {
   return (
     <>
       <NavBar />
       <div>
-      <SearchBar />
+        <SearchBar />
       </div>
       <div className="container-fluid text-center">
         <div className="row">
@@ -25,7 +24,7 @@ function HomePage() {
             ></div>
           </div>
           {/* cards */}
-          <div className="container col-10 mt-5 pt-5">
+          <div className="container col-9 mt-5 pt-5">
             <Grid
               container
               spacing={0.5}
@@ -35,30 +34,69 @@ function HomePage() {
                 padding: "1rem",
               }}
             >
-              <Card sx={{ maxWidth: 250, marginBottom: "16px" }}>
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-              </Card>
-              <Card sx={{ maxWidth: 250, marginBottom: "16px" }}>
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-              </Card>
-              <Card sx={{ maxWidth: 250, marginBottom: "16px" }}>
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-              </Card>
-              <Card sx={{ maxWidth: 250, marginBottom: "16px" }}>
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-                {<MultiActionAreaCard />}
-              </Card>
+              <div>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+              </div>
+
+              <div>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+              </div>
+
+              <div>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+              </div>
+
+              <div>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+
+                <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+                  {<MultiActionAreaCard />}
+                </Card>
+              </div>
             </Grid>
           </div>
         </div>

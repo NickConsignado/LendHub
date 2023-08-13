@@ -4,20 +4,16 @@ import logo from "../assets/lend-hub-logo.png";
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-expand-sm navbar-expand-md bg-body-tertiary">
+    <nav className="navbar d-flex">
       <div className="container-fluid">
-        <div className="row justify-content-between align-items-center w-100">
-          <div className="col-6">
-            <div className="navbar-brand"><img src={logo} width={150} /></div>
+        <div className="d-flex column justify-content-between align-items-center w-100">
+          <div className="col-lg-6">
+            <div className="navbar-brand">
+              <img src={logo} width={150} />
+            </div>
           </div>
-          <div className="col-6">
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            ></div>
-          </div>
+          <SignIn />
         </div>
-        <SignIn />
       </div>
     </nav>
   );

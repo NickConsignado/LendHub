@@ -22,7 +22,7 @@ function SignIn() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <span><i className="fa-solid fa-user-tie fa-2xl"></i>Admin</span>
+        <span className="text-primary"><i className="text-secondary fa-solid fa-user-tie fa-2xl"></i>Admin</span>
       </Button>
       <Menu
         id="demo-positioned-menu"
