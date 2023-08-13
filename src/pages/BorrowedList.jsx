@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NavBar from '../components/NavBar';
 
 function BorrowedList() {
   const [rows, setRows] = useState([]);
@@ -20,6 +21,7 @@ function BorrowedList() {
 
   return (
     <>
+    <NavBar />
       <div className="container table table-striped mt-5">
         <form className="form ">
         <div class="row g-3">
