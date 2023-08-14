@@ -5,22 +5,27 @@ import Footer from "./components/Footer";
 import BorrowedList from "./pages/BorrowedList";
 import { Provider } from "react-redux";
 import NavBar from "./components/NavBar";
+import store from "./store/store";
+
 
 
 function App() {
   return (
     <>
-      <Provider>
+      
+      <Provider store={store}>
         <BrowserRouter>
          <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/book-info" element={<BookInfo />} />
             <Route path="/borrowed-list" element={<BorrowedList />} />
+            
           </Routes>
           <Footer />
         </BrowserRouter>
-      </Provider>
+        </Provider>
+      
     </>
   );
 }
