@@ -3,9 +3,9 @@ import HomePage from "./pages/HomePage";
 import BookInfo from "./pages/BookInfo";
 import Footer from "./components/Footer";
 import BorrowedList from "./pages/BorrowedList";
-import "bootstrap/dist/js/bootstrap.js";
 import { Provider } from "react-redux";
 import NavBar from "./components/NavBar";
+
 
 function App() {
   return (
