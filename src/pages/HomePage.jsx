@@ -5,28 +5,41 @@ import NavBar from "../components/NavBar.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import "./HomePage.scss";
 import Carousel from "../components/Carousel.jsx";
+import SideBar from "../components/SideBar.jsx";
 
 function HomePage() {
   return (
     <>
       <NavBar />
-      <div>
+      <div className="d-flex align-items-baseline">
+        <div className="navbar navbar-expand-lg">
+        <button
+            className="navbar-toggler ms-3"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          </div>
         <SearchBar />
       </div>
+
+
+
       <div className="container-fluid text-center">
         <div className="row">
           {/* sort */}
-          <div className="col-2 pt-5 mt-5">
-            <div
-              className="card"
-              style={{
-                height: "100rem",
-                width: "auto",
-              }}
-            ></div>
+          <div className="col-lg-2 pt-lg-5 mt-lg-5">
+            <div>
+              <SideBar />
+            </div>
           </div>
           {/* cards */}
-          <div className="container col-9 mt-5 pt-5">
+          <div className="container col-lg-9 mt-lg-5 pt-lg-5">
             <Carousel />
             <Grid
               container
