@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 
 function BorrowedList() {
+  const dispatch = useDispatch()
+  const borrowedLists = useSelector(state => state.borrowedLists)
+
+
   const [items, setItems] = useState([]);
   const [borrowedBy, setBorrowedBy] = useState("");
   const [borrowedDate, setBorrowedDate] = useState("");
