@@ -14,7 +14,7 @@ function BorrowedList() {
   const [nameOfBook, setNameOfBook] = useState("");
 
   const addItem = () => {
-    if (nameOfBook.trim() !== "") {
+    if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && nameOfBook.trim() !== "") {
       const newItem = {
         borrowedBy: borrowedBy,
         borrowedDate: borrowedDate,
