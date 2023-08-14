@@ -1,18 +1,32 @@
 import React, { useState } from "react";
-import NavBar from "../components/NavBar";
-import "bootstrap/dist/js/bootstrap.js";
+
 
 function BorrowedList() {
-  const [rows, setRows] = useState([]);
-  const [borrowedby, setBorrowedBy] = useState("");
-  const [borroweddate, setBorrowedDate] = useState("");
-  const [returndate, setReturnDate] = useState("");
-  const [nameofbook, setNameOfBook] = useState("");
+  const [items, setItems] = useState([]);
+  const [borrowedBy, setBorrowedBy] = useState("");
+  const [borrowedDate, setBorrowedDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [nameOfBook, setNameOfBook] = useState("");
 
-  const addRow = () => {
-    const newRow = { borrowedby, borroweddate, returndate, nameofbook };
-    setRows([...rows, newRow]);
+  const addItem = () => {
+    if (nameOfBook.trim() !== "") {
+      const newItem = {
+        borrowedBy: borrowedBy,
+        borrowedDate: borrowedDate,
+        returnDate: returnDate,
+        nameOfBook: nameOfBook,
+      };
+      setItems([...items, newItem]);
+      resetForm();
+    }
+  };
 
+  const removeItem = (index) => {
+    const newItems = items.filter((_, i) => i !== index);
+    setItems(newItems);
+  };
+
+  const resetForm = () => {
     setBorrowedBy("");
     setBorrowedDate("");
     setReturnDate("");
@@ -20,98 +34,80 @@ function BorrowedList() {
   };
 
   return (
-    <>
-      <NavBar />
+    <div className="App">
       <div className="container table table-striped mt-5">
-        <form className="form ">
-          <div classname="row g-3">
-            <div className="col">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Name"
-                aria-label="name"
-              />
-            </div>
-            <div classname="col">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Borrowed Date"
-                aria-label="Borrowed Date"
-              />
-            </div>
-            <div classname="col">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Return Date"
-                aria-label="Return Date"
-              />
-            </div>
-            <div classname="col">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Name Of Book"
-                aria-label="Name Of Book"
-              />
-            </div>
-            <button type="button" className="btn-add" onClick={addRow}>
-              Add
-            </button>
-          </div>
-        </form>
-        <table className="table container table table-striped border mt-5">
+        <h1>Borrowed Items List</h1>
+        <div className="form-group">
+          <label>Borrowed By</label>
+          <input
+            type="text"
+            className="form-control"
+            value={borrowedBy}
+            onChange={(e) => setBorrowedBy(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Borrowed Date</label>
+          <input
+            type="date"
+            className="form-control"
+            value={borrowedDate}
+            onChange={(e) => setBorrowedDate(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Return Date</label>
+          <input
+            type="date"
+            className="form-control"
+            value={returnDate}
+            onChange={(e) => setReturnDate(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Name of Book</label>
+          <input
+            type="text"
+            className="form-control"
+            value={nameOfBook}
+            onChange={(e) => setNameOfBook(e.target.value)}
+          />
+        </div>
+        <button className="btn btn-primary" onClick={addItem}>
+          Add Item
+        </button>
+        <table className="table mt-3">
           <thead>
             <tr>
-              <th>Borrowed by</th>
+              <th>Borrowed By</th>
               <th>Borrowed Date</th>
               <th>Return Date</th>
-              <th>Name Of Book</th>
+              <th>Name of Book</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
-              <tr key={row}>
-                <td>{row.borrowedBy}Wanda</td>
-                <td>{row.borrowedDate}july, 10, 2023</td>
-                <td>{row.returnDate}Aug, 10, 2023</td>
-                <td>{row.nameOfBook}Harry Potter</td>
+            {items.map((item, index) => (
+              <tr key={index}>
+                <td>{item.borrowedBy}</td>
+                <td>{item.borrowedDate}</td>
+                <td>{item.returnDate}</td>
+                <td>{item.nameOfBook}</td>
+                <td>
+                  <button
+                    className="btn btn-danger btn-sm"
+                    onClick={() => removeItem(index)}
+                  >
+                    Remove
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }
 
 export default BorrowedList;
-
-/* <div>
-        <table className="container table table-dark mt-5">
-          <thead>
-              <tr>
-                <th>Borrowed by</th>
-                <th>Borrowed Date</th>
-                <th>Return Date</th>
-                <th>Name Of Book</th>
-              </tr>
-          </thead>
-          <tbody >
-            <tr>
-              <td>Wanda</td>
-              <td>06/08/2023</td>
-              <td>07/09/2023</td>
-              <td>Harry Potter</td>
-            </tr>
-            <tr>
-              <td>Juan</td>
-              <td>04/09/2023</td>
-              <td>06/09/2023</td>
-              <td>Harry Potter</td>
-            </tr>
-          </tbody> 
-        </table>
-      </div>*/
