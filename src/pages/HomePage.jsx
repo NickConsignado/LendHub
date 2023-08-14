@@ -10,7 +10,6 @@ import SideBar from "../components/SideBar.jsx";
 function HomePage() {
   return (
     <>
-      <NavBar />
       <div className="d-flex align-items-baseline">
         <div className="navbar navbar-expand-lg">
         <button
