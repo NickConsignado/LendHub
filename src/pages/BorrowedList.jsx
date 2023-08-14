@@ -39,6 +39,7 @@ function BorrowedList() {
   };
 
   return (
+  <>
     <div className="App">
       <div className="container table table-striped mt-5">
         <h1>Borrowed Items List</h1>
@@ -112,6 +113,7 @@ function BorrowedList() {
         </table>
       </div>
     </div>
+  </>  
   );
 }
 

@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Card } from "@mui/material";
 import MultiActionAreaCard from "../components/Books.jsx";
-import NavBar from "../components/NavBar.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import "./HomePage.scss";
 import Carousel from "../components/Carousel.jsx";

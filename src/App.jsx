@@ -19,8 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/book-info" element={<BookInfo />} />
-            <Route path="/borrowed-list" element={<BorrowedList />} />
-            
+            <Route path="/borrowed-list" element={<BorrowedList />} /> 
           </Routes>
           <Footer />
         </BrowserRouter>
