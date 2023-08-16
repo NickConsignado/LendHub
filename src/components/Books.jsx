@@ -6,35 +6,46 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function MultiActionAreaCard() {
-  return (
-    <Card sx={{ maxWidth: 300, maxHight: 1000 }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="240"
-          image="https://covers.openlibrary.org/b/id/10716377-L.jpg"
-          alt="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          <Link to="/book-info" style={{ textDecoration: "none" }}>
-            View more
-          </Link>
-        </Button>
-      </CardActions>
-    </Card>
-  );
-}
+const MultiActionAreaCard = (data) => {
+  const renderBookDetails = () => {
+    return data.data.map((item) => {
+      return (
+        <>
+          <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+            <Card sx={{ maxWidth: 300, maxHight: 1000 }}>
+              <CardActionArea>
+                <Link to="/book-info" style={{ textDecoration: "none" }}>
+                  <CardMedia
+                    component="img"
+                    height="240"
+                    image="https://covers.openlibrary.org/b/id/10716377-L.jpg"
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {item.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {item.description}
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary">
+                  <Link to="/book-info" style={{ textDecoration: "none" }}>
+                    View more
+                  </Link>
+                </Button>
+              </CardActions>
+            </Card>
+          </Card>
+        </>
+      );
+    });
+  };
+
+  return <>{renderBookDetails()}</>;
+};
 
 export default MultiActionAreaCard;

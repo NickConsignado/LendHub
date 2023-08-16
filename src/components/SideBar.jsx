@@ -1,31 +1,32 @@
-function SideBar() {
+import React, { useState } from "react";
+import Checkbox from "@mui/material/Checkbox";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+
+const SideBar = ({ value, handleChangeRadio }) => {
   return (
-    <>
-      <nav className="navbar navbar-expand-lg">
-        <div className="container-fluid ">
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul>
-              <li className="nav-item">
-                <a className="nav-link " aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item"> 
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </>
+    <FormControl>
+      <FormLabel id="demo-controlled-radio-buttons-group">Filter</FormLabel>
+      <RadioGroup
+        aria-labelledby="demo-controlled-radio-buttons-group"
+        name="controlled-radio-buttons-group"
+        value={value}
+        onChange={handleChangeRadio}
+      >
+        <FormControlLabel value="drama" control={<Radio />} label="Drama" />
+        <FormControlLabel value="romance" control={<Radio />} label="Romance" />
+        <FormControlLabel
+          value="adventure"
+          control={<Radio />}
+          label="Adventure"
+        />
+        <FormControlLabel value="comedy" control={<Radio />} label="Comedy" />
+      </RadioGroup>
+    </FormControl>
   );
-}
+};
 
 export default SideBar;

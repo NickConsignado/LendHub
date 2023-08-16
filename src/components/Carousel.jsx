@@ -9,6 +9,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
+import "./Carousel.scss";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -52,7 +53,7 @@ function Carousel() {
   };
 
   return (
-    <Box sx={{ maxWidth: "93.5%", flexGrow: 1 }}>
+    <Box sx={{ maxWidth: "100%", flexGrow: 1 }}>
       <Paper
         square
         elevation={0}
@@ -78,7 +79,7 @@ function Carousel() {
               <Box
                 component="img"
                 sx={{
-                  height: 255,
+                  height: 400,
                   display: "block",
                   maxWidth: "auto",
                   overflow: "hidden",
@@ -121,6 +122,32 @@ function Carousel() {
         }
       />
     </Box>
+
+    // <div class="carousel-inner">
+    //   <div class="carousel-item active" data-bs-interval="5000" id="carousel-item">
+    //     <div class="carousel-cover">
+    //       <div class="d-grid carousel-cover-img">
+    //         <img id="img-slide-1" src="" class="d-block d-lg-none w-50 c-img" alt="">
+    //         <img id="img-slide-1-s" src="" class="d-none d-lg-block w-50 c-md-img" alt="">
+    //       </div>
+    //     </div>
+    //     <div class="carousel-caption d-flex flex-column justify-content-end" id="carousel-text">
+    //       <div id="carousel-sub-text">#1 Spotlight</div>
+    //       <div id="carousel-title"><span id="title-slide-1"></span></div>
+    //       <div class="gap-4 d-none d-xl-flex " id="carousel-detail">
+    //         <div><i class="fas fa-play-circle me-1" ></i><span id="type-slide-1"></span></div>
+    //         <div><i class="fas fa-clock me-1" ></i><span id="duration-slide-1"></span></div>
+    //         <div><i class="fas fa-calendar me-1"></i><span id="aired-date-slide-1"></span></div>
+    //       </div>
+    //       <div id="carousel-description-section" class="w-50 d-none d-xl-block">
+    //         <div id="carousel-description"><span id="synopsis-slide-1"></span></div>
+    //       </div>
+    //       <div id="carousel-btn">
+    //         <a href="#" id="detail-btn">Detail<i class="fas fa-angle-right ms-2"></i></a>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }
 

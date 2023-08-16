@@ -1,18 +1,35 @@
-function SearchBar() {
+import { Container, InputAdornment, TextField } from "@mui/material";
+import { useState } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+
+const SearchBar = ({ handleSearch }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (event) => {
+    console.log("event", event);
+    setSearchTerm(event.target.defaultValue);
+  };
+
   return (
-    <>
-      <div className="container text-center">
-        <input
-          className="border rounded-start col-lg-8"
-          type="text"
-          placeholder="Search..."
-        />
-        <button className="border rounded-end bg-primary text-secondary ">
-          <i className="fa-solid fa-magnifying-glass fa-lg"></i>
-        </button>
-      </div>
-    </>
+    <Container maxWidth="md" sx={{ mt: 1, ms: 4, textAlign: "center" }}>
+      <TextField
+        id="search"
+        type="search"
+        label="Search"
+        value={searchTerm}
+        onChange={handleChange}
+        sx={{ width: 350 }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <SearchIcon />
+            </InputAdornment>
+          ),
+        }}
+        className=""
+      />
+    </Container>
   );
-}
+};
 
 export default SearchBar;
