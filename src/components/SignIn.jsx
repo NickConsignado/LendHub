@@ -41,6 +41,7 @@ function SignIn() {
         }}
       >
         <Link to="/borrowed-list" style={{textDecoration: "none", color:"black"}}><MenuItem onClick={handleClose}>Borrowed List</MenuItem></Link>
+        <Link to="/book" style={{textDecoration: "none", color:"black"}}><MenuItem onClick={handleClose}>Book List</MenuItem></Link>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>

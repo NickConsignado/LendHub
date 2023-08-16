@@ -26,7 +26,7 @@ function HomePage() {
         <SearchBar />
       </div>
 
-
+     
 
       <div className="container-fluid text-center">
         <div className="row">

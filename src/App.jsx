@@ -6,6 +6,7 @@ import BorrowedList from "./pages/BorrowedList";
 import { Provider } from "react-redux";
 import NavBar from "./components/NavBar";
 import store from "./store/store";
+import BookList from "./pages/BookList";
 
 
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/book-info" element={<BookInfo />} />
             <Route path="/borrowed-list" element={<BorrowedList />} /> 
+            <Route path="/book" element={<BookList />} />
           </Routes>
           <Footer />
         </BrowserRouter>
