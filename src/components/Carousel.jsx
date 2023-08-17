@@ -24,14 +24,18 @@ const images = [
       "https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/harrypotter/hp1/hp1-hero-d.jpg/_jcr_content/renditions/original.JPEG",
   },
   {
-    label: "Genshin Impact",
-    imgPath:
-      "https://i0.wp.com/playerassist.com/wp-content/uploads/2020/10/max-level-genshin-impact.jpg?fit=793%2C262&ssl=1",
-  },
-  {
     label: "Regression",
     imgPath:
       "https://noblesuggestions.com/wp-content/uploads/2021/04/dcqw98z-9dcf3253-ab1b-47fc-af3e-93e59ac3ba46-min.jpg",
+  },
+  {
+    label: "Harry Potter the Sorcerer's Stone",
+    imgPath:
+      "https://roost.nbcuni.com/bin/viewasset.html/content/dam/Peacock/Landing-Pages/2-0-design/harrypotter/hp1/hp1-hero-d.jpg/_jcr_content/renditions/original.JPEG",
+  },
+  {
+    label: "Solo Leveling",
+    imgPath: "https://cdn.wallpapersafari.com/27/89/RXGi4n.jpg",
   },
 ];
 

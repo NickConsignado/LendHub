@@ -63,21 +63,9 @@ const HomePage = () => {
 
   return (
     <>
-      0
       <div className="d-flex align-items-baseline">
-        <div className="navbar navbar-expand-lg">
-          <button
-            className="navbar-toggler ms-3"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-        </div>
+        <div className="navbar"></div>
+
         <Container maxWidth="md" sx={{ mt: 1, ms: 4, textAlign: "center" }}>
           <TextField
             id="search"

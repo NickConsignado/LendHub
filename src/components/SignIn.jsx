@@ -23,7 +23,9 @@ function SignIn() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <span className="text-primary"><i className="text-secondary fa-solid fa-user-tie fa-2xl"></i>Admin</span>
+        <span className="text-primary">
+          <i className="text-secondary fa-solid fa-user-tie fa-2xl"></i>
+        </span>
       </Button>
       <Menu
         id="demo-positioned-menu"
@@ -40,8 +42,15 @@ function SignIn() {
           horizontal: "left",
         }}
       >
-        <Link to="/borrowed-list" style={{textDecoration: "none", color:"black"}}><MenuItem onClick={handleClose}>Borrowed List</MenuItem></Link>
-        <Link to="/book" style={{textDecoration: "none", color:"black"}}><MenuItem onClick={handleClose}>Book List</MenuItem></Link>
+        <Link
+          to="/borrowed-list"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <MenuItem onClick={handleClose}>Borrowed List</MenuItem>
+        </Link>
+        <Link to="/book" style={{ textDecoration: "none", color: "black" }}>
+          <MenuItem onClick={handleClose}>Book List</MenuItem>
+        </Link>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
       </Menu>

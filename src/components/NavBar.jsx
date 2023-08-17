@@ -1,6 +1,8 @@
 import React from "react";
 import SignIn from "./SignIn.jsx";
 import logo from "../assets/lend-hub-logo.png";
+import "./NavBar.scss";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -8,9 +10,9 @@ function NavBar() {
       <div className="container-fluid">
         <div className="d-flex column justify-content-between align-items-center w-100">
           <div className="col-lg-6">
-            <div className="navbar-brand">
+            <Link to="/" className="navbar-brand">
               <img src={logo} width={150} />
-            </div>
+            </Link>
           </div>
           <SignIn />
         </div>
