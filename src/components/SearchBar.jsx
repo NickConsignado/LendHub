@@ -14,11 +14,11 @@ const SearchBar = ({ handleSearch }) => {
     <Container maxWidth="md" sx={{ mt: 1, ms: 4, textAlign: "center" }}>
       <TextField
         id="search"
+        sx={{ width: 350, fontFamily: "Oswald" }}
         type="search"
         label="Search"
         value={searchTerm}
         onChange={handleChange}
-        sx={{ width: 350 }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import MultiActionAreaCard from "../components/Books.jsx";
 import SearchBar from "../components/SearchBar.jsx";
-import "./HomePage.scss";
+import "../../scss/HomePage.scss";
 import Carousel from "../components/Carousel.jsx";
 import SideBar from "../components/SideBar.jsx";
 import SearchIcon from "@mui/icons-material/Search";
@@ -76,10 +76,7 @@ const HomePage = () => {
             </div>
           </div>
           {/* cards */}
-          <div
-            className="container col-lg-9 mt-lg-5 pt-lg-5"
-            id="searchbotparent"
-          >
+          <div className="container col-lg-9" id="searchbotparent">
             <div className="d-flex" id="searchbot">
               <Container sx={{ textAlign: "center", height: "5rem" }}>
                 <TextField
@@ -96,7 +93,6 @@ const HomePage = () => {
                       </InputAdornment>
                     ),
                   }}
-                  className=""
                 />
               </Container>
             </div>
@@ -110,6 +106,7 @@ const HomePage = () => {
                 padding: "1rem",
                 boxShadow: "0 2rem 3rem rgba(000, 0.175);",
               }}
+              id="Grid"
             >
               {books.length === 0 ? (
                 <div> No Data Found </div>

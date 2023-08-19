@@ -14,14 +14,22 @@ $box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
       rgb(254, 254, 251) 100%
     );
   }
-  #sideParentContainer {
-  }
+
   #ads {
     display: none;
   }
   #searchbotparent {
     align-items: center;
-    margin-top: 1rem;
+    padding-top: 0.5rem;
+    margin: 0;
+  }
+  #Grid {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+  #legitcard {
+    justify-self: center;
+    vertical-align: sub;
   }
 }
 // -------End of phone media
@@ -36,11 +44,12 @@ $box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
     padding-right: 0;
     margin-left: 1.5rem;
   }
-}
-
-.Card {
-  box-shadow: $box-shadow-lg;
-  /* other card styling */
+  #Grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #legitcard {
+    height: 40rem;
+  }
 }
 
 #sidecontainer {

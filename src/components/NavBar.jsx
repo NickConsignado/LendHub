@@ -1,7 +1,7 @@
 import React from "react";
 import SignIn from "./SignIn.jsx";
 import logo from "../assets/lend-hub-logo.png";
-import "./NavBar.scss";
+import "../../scss/NavBar.scss";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Toolbar from "@mui/material/Toolbar";

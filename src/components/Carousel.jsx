@@ -9,7 +9,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
-import "./Carousel.scss";
+import "../../scss/Carousel.scss";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -69,7 +69,7 @@ function Carousel() {
           bgcolor: "background.default",
         }}
       >
-        <Typography>{images[activeStep].label}</Typography>
+        <Typography id="Typo">{images[activeStep].label}</Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -84,7 +84,7 @@ function Carousel() {
                 component="img"
                 sx={{
                   height: 400,
-                  display: "block",
+                  display: "cover",
                   maxWidth: "auto",
                   overflow: "hidden",
                   width: "100%",
