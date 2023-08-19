@@ -9,7 +9,12 @@ import FormLabel from "@mui/material/FormLabel";
 const SideBar = ({ value, handleChangeRadio }) => {
   return (
     <FormControl>
-      <FormLabel id="demo-controlled-radio-buttons-group">Filter</FormLabel>
+      <FormLabel
+        id="demo-controlled-radio-buttons-group"
+        sx={{ fontSize: "1rem", color: "#654620" }}
+      >
+        <b>Category</b>
+      </FormLabel>
       <RadioGroup
         aria-labelledby="demo-controlled-radio-buttons-group"
         name="controlled-radio-buttons-group"

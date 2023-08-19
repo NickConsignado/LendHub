@@ -1,7 +1,51 @@
 $black: #000;
 $box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
 
+@media (min-width: 320px) {
+  .navbar {
+    margin-left: -3rem;
+  }
+  #sidecontainer {
+    padding-top: 2rem;
+    background: linear-gradient(
+      280deg,
+      rgb(255, 252, 203) 0%,
+      rgb(248, 240, 230) 35%,
+      rgb(254, 254, 251) 100%
+    );
+  }
+  #sideParentContainer {
+  }
+  #ads {
+    display: none;
+  }
+  #searchbotparent {
+    align-items: center;
+    margin-top: 1rem;
+  }
+}
+// -------End of phone media
+@media (min-width: 992px) {
+  #sidecontainer {
+    border-color: mediumaquamarine;
+    border: double;
+    height: max-content;
+    padding-bottom: 3rem;
+    margin-top: 3rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 1.5rem;
+  }
+}
+
 .Card {
   box-shadow: $box-shadow-lg;
   /* other card styling */
+}
+
+#sidecontainer {
+  border-color: mediumaquamarine;
+  border: double;
+  height: max-content;
+  padding-bottom: 3rem;
 }

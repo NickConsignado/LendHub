@@ -1,9 +1,30 @@
-$dark-green-color: #557a46;
-$light-green-color: #7a9d54;
-$red-color: #8c3333;
-$beige-color: #f2ee9d;
-$black: #0000;
+$dark-green: #183a1d; //rgb(24,58,29)
+$light-green: #7a9d54;
+$brown: #654620; //rgb(101,70,32)
+$beige: #f2ee9d;
+$light-biege: #fffdf8fa;
+$orange: #f0a04b; //rgb(240,160,75)
 
 .navbar {
-  background-color: $beige-color;
+  background: rgb(242, 238, 157);
+  background: linear-gradient(
+    280deg,
+    rgba(242, 238, 157, 1) 0%,
+    rgba(184, 140, 87, 1) 35%,
+    rgba(242, 238, 157, 1) 100%
+  );
+  opacity: 90%;
+}
+#logos {
+  margin-left: 4rem;
+}
+@media (min-width: 320px) {
+  .navbar {
+    background: linear-gradient(
+      280deg,
+      rgb(255, 252, 203) 0%,
+      rgb(246, 217, 181) 35%,
+      rgb(254, 254, 251) 100%
+    );
+  }
 }

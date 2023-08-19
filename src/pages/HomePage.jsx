@@ -13,6 +13,7 @@ import Carousel from "../components/Carousel.jsx";
 import SideBar from "../components/SideBar.jsx";
 import SearchIcon from "@mui/icons-material/Search";
 import data from "./books.json";
+import Advertisement from "../components/Advertisement.jsx";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -63,38 +64,42 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="d-flex align-items-baseline">
-        <div className="navbar"></div>
-
-        <Container maxWidth="md" sx={{ mt: 1, ms: 4, textAlign: "center" }}>
-          <TextField
-            id="search"
-            type="search"
-            label="Search"
-            value={searchTerm}
-            onChange={handleChange}
-            sx={{ width: 350 }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-            }}
-            className=""
-          />
-        </Container>
-      </div>
       <div className="container-fluid text-center">
-        <div className="row">
+        <div className="row" sx={{ marginLeft: "0" }}>
           {/* sort */}
-          <div className="col-lg-2 pt-lg-5 mt-lg-5">
-            <div>
+          <div className="col-lg-2 pt-lg-5" id="sideParentContainer">
+            <div id="sidecontainer">
               <SideBar value={value} handleChangeRadio={handleChangeRadio} />
+            </div>
+            <div id="ads">
+              <Advertisement />
             </div>
           </div>
           {/* cards */}
-          <div className="container col-lg-9 mt-lg-5 pt-lg-5">
+          <div
+            className="container col-lg-9 mt-lg-5 pt-lg-5"
+            id="searchbotparent"
+          >
+            <div className="d-flex" id="searchbot">
+              <Container sx={{ textAlign: "center", height: "5rem" }}>
+                <TextField
+                  id="search"
+                  type="search"
+                  label="Search"
+                  value={searchTerm}
+                  onChange={handleChange}
+                  sx={{ width: 300 }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                  className=""
+                />
+              </Container>
+            </div>
             <Carousel />
             <Grid
               container
