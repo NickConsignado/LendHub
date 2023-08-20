@@ -104,7 +104,6 @@ const HomePage = () => {
                 display: "grid",
                 gridTemplateColumns: "repeat(4, 1fr)",
                 padding: "1rem",
-                boxShadow: "0 2rem 3rem rgba(000, 0.175);",
               }}
               id="Grid"
             >

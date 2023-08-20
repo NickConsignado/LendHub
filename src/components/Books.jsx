@@ -12,7 +12,13 @@ const MultiActionAreaCard = (data) => {
     return data.data.map((item) => {
       return (
         <>
-          <Card sx={{ maxWidth: 250, marginBottom: "40px" }}>
+          <Card
+            sx={{
+              maxWidth: 250,
+              marginBottom: "40px",
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",
+            }}
+          >
             <CardActionArea>
               <Link to="/book-info" style={{ textDecoration: "none" }}>
                 <CardMedia
@@ -21,24 +27,30 @@ const MultiActionAreaCard = (data) => {
                   alt="green iguana"
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    id="cardTitle"
+                  >
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    id="cardDescription"
+                  >
                     {item.description}
                   </Typography>
                 </CardContent>
               </Link>
             </CardActionArea>
             <CardActions>
-              <Button size="small" color="primary">
-                <Link
-                  to="/book-info"
-                  style={{ textDecoration: "none", float: "bottom" }}
-                >
-                  View more
-                </Link>
-              </Button>
+              <div className="button-wrapper">
+                <Button size="small" color="primary">
+                  <Link to="/book-info">View more</Link>
+                </Button>
+              </div>
             </CardActions>
           </Card>
         </>

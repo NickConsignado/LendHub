@@ -11,10 +11,17 @@ const SearchBar = ({ handleSearch }) => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ mt: 1, ms: 4, textAlign: "center" }}>
+    <Container
+      maxWidth="md"
+      sx={{
+        mt: 1,
+        ms: 4,
+        textAlign: "center",
+        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)",
+      }}
+    >
       <TextField
         id="search"
-        sx={{ width: 350, fontFamily: "Oswald" }}
         type="search"
         label="Search"
         value={searchTerm}

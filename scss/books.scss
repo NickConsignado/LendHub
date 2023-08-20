@@ -1,0 +1,15 @@
+.Card > image {
+  height: 3rem;
+}
+
+#cardTitle {
+  font-family: "Oswald", sans-serif;
+  color: black;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  width: 100%; /* Full width of the card */
+  margin-top: auto; /* Push the button to the bottom */
+}
