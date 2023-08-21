@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -13,20 +14,36 @@ function BorrowedList() {
   const [returnDate, setReturnDate] = useState("");
   const [nameOfBook, setNameOfBook] = useState("");
 
-  const addItem = () => {
-    if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && nameOfBook.trim() !== "") {
-      const newItem = {
-        borrowedBy: borrowedBy,
-        borrowedDate: borrowedDate,
-        returnDate: returnDate,
-        nameOfBook: nameOfBook,
-      };
-      setItems([...items, newItem]);
-      resetForm();
-    }
+  const addItem = async () => {
+
+    try {
+      const res = await axios.post('http://localhost:8000/api/v1/borrowings', {
+       borrowedBy,
+       borrowedDate,
+       returnDate,
+        }, {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+      })
+      if (res.status === 200) {
+        if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && nameOfBook.trim() !== "") {
+          const newItem = {
+            borrowedBy: borrowedBy,
+            borrowedDate: borrowedDate,
+            returnDate: returnDate,
+            nameOfBook: nameOfBook,
+          };
+          setItems([...items, newItem]);
+          resetForm('');
+        }
+      }
+    } catch (err) {
+     console.log('something went wrong');
+      } 
   };
 
-  const removeItem = (index) => {
+  const removeItem  = (index) => {
     const newItems = items.filter((_, i) => i !== index);
     setItems(newItems);
   };
