@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import MyComponentyarn from "../components/Api.jsx";
 
 function BookInfo() {
   return (
     <>
-    <Link to="/"><button className="btn btn-primary">Go back</button></Link>
+      <Link to="/">
+        <button className="btn btn-primary">Go back</button>
+      </Link>
       <main className="w-100 d-flex flex-column align-items-center mt-5">
         <div className="container d-flex flex-wrap row justify-content-center">
+          <MyComponent />
           <img
             src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1474154022i/3.jpg"
             className="card-img-top col-6"
@@ -85,7 +89,6 @@ function BookInfo() {
             </div>
           </ul>
         </div>
-
       </main>
     </>
   );
