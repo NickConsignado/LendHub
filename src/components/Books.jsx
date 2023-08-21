@@ -5,55 +5,77 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { Link } from "react-router-dom";
+import axios from "axios"; // Import axios
 import "../../scss/books.scss";
 
-const MultiActionAreaCard = (data) => {
+const MultiActionAreaCard = () => {
+  const [booksData, setBooksData] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/api/v1/books");
+        setBooksData(response.data.data); // Set fetched data to the state
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const renderBookDetails = () => {
-    return data.data.map((item) => {
+    return booksData.map((item) => {
       return (
-        <>
-          <Card
-            sx={{
-              maxWidth: 250,
-              marginBottom: "40px",
-              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",
-            }}
-          >
-            <CardActionArea>
-              <Link to="/book-info" style={{ textDecoration: "none" }}>
-                <CardMedia
-                  component="img"
-                  image="https://covers.openlibrary.org/b/id/10716377-L.jpg"
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    id="cardTitle"
-                  >
-                    {item.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    id="cardDescription"
-                  >
-                    {item.description}
-                  </Typography>
-                </CardContent>
-              </Link>
-            </CardActionArea>
-            <CardActions>
-              <div className="button-wrapper">
-                <Button size="small" color="primary">
-                  <Link to="/book-info">View more</Link>
-                </Button>
-              </div>
-            </CardActions>
-          </Card>
-        </>
+        <Card
+          key={item.id}
+          sx={{
+            maxWidth: 250,
+            marginBottom: "40px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",
+          }}
+        >
+          <CardActionArea>
+            <Link to="/book-info" style={{ textDecoration: "none" }}>
+              <CardMedia
+                component="img"
+                image={item.thumbnail}
+                alt="Book Thumbnail"
+              />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                  id="cardTitle"
+                >
+                  {item.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  id="cardDescription"
+                >
+                  Genre: {item.genre}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  id="cardDescription"
+                >
+                  Stocks: {item.stocks}
+                </Typography>
+              </CardContent>
+            </Link>
+          </CardActionArea>
+          <CardActions>
+            <div className="button-wrapper">
+              <Button size="small" color="primary">
+                <Link to="/book-info">View more</Link>
+              </Button>
+            </div>
+          </CardActions>
+        </Card>
       );
     });
   };
