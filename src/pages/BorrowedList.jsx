@@ -87,14 +87,17 @@ function BorrowedList() {
             onChange={(e) => setReturnDate(e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label>Name of Book</label>
-          <input
-            type="text"
-            className="form-control"
-            value={nameOfBook}
-            onChange={(e) => setNameOfBook(e.target.value)}
-          />
+        <div className="form-group"> 
+        <label>Books</label>
+          <select className="form-select" defaultValue={nameOfBook} onChange={(e) => setNameOfBook(e.target.value)} aria-label="Default select example">
+            <option selected>Romance, Drama, Comedy, adventure, horror</option>
+            <option defaultValue="1">1</option>
+            <option defaultValue="2">2</option>
+            <option defaultValue="3">3</option>
+            <option defaultValue="3">4</option>
+            <option defaultValue="3">5</option>
+          </select>
+          
         </div>
         <button className="btn btn-primary" onClick={addItem}>
           Add Item
