@@ -60,6 +60,7 @@ const HomePage = () => {
     });
     setData(filteredBooks);
   }, [selectedGenres, searchTerm]);
+
   // -----------
   const handleChangeAll = (event) => {
     setIsDrama(event.target.checked);
@@ -69,8 +70,8 @@ const HomePage = () => {
   const handleChangeDrama = (event) => {
     setIsDrama(event.target.checked);
   };
-  const handleChangeRomance = (event) => {
-    setIsRomance(event.target.checked);
+  const handleChangeHorror = (event) => {
+    setIsHorror(event.target.checked);
   };
   const handleChangeComedy = (event) => {
     setIsComedy(event.target.checked);
