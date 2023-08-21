@@ -41,6 +41,11 @@ $box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
     justify-self: center;
     vertical-align: sub;
   }
+  .no-data > img {
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 1rem;
+  }
 }
 // -------End of phone media
 @media (min-width: 992px) {
@@ -59,10 +64,23 @@ $box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
   #legitcard {
     height: 40rem;
   }
+  .no-data > img {
+    width: 23rem;
+    height: 23rem;
+    margin-bottom: 1rem;
+  }
 }
 
 #sidecontainer {
   border-color: mediumaquamarine;
   height: max-content;
   padding-bottom: 3rem;
+}
+.no-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
 }
