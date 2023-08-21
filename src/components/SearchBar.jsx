@@ -17,7 +17,7 @@ const SearchBar = ({ handleSearch }) => {
         mt: 1,
         ms: 4,
         textAlign: "center",
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)",
+        boxShadow: "0px 4px 8px rgba(4, 0, 0, 0.9)",
       }}
     >
       <TextField
