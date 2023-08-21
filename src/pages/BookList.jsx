@@ -1,24 +1,51 @@
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { Toast } from "bootstrap"
+import axios from "axios"
+
 
 function BookList() {
   const formik = useFormik({
     initialValues: {
       title: '',
       author: '',
-      thumbnail: '',
-      descriptions: ''
+      descriptions: '',
+      stocks: '',
+      genre: '',
+      thumbnail: '',  
     },
     validationSchema: Yup.object({
       title: Yup.string().required("Book Name title is required"),
       author: Yup.string().required("Book Name author is required"),
+      descriptions: Yup.string().required("Description of a book is required"),
+      stocks: Yup.number().required("Number of Stocks is required"),
+      genre: Yup.string().required("The genre is required"),
       thumbnail: Yup.string().required("Book Name photo is required"),
-      descriptions: Yup.string().required("Description of a book is required")
     }),
-    onSubmit: (value) => {
-      console.log(value)
-      new Toast(document.getElementById('liveToast')).show()
+    onSubmit: async (value) => {
+
+      try {
+        console.log(value)
+        const res = await axios.post('http://localhost:8000/api/v1/books', {
+            title: value.title,
+            author: value.author,
+            descriptions: value.descriptions,
+            stocks: value.stocks,
+            genre: value.genre,
+            thumbnail: value.thumbnail,  
+          }, {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+         
+        if (res.status === 200) {
+          new Toast(document.getElementById('liveToast')).show() 
+        }
+      } catch (err) {
+          // show error
+        console.log('something went wrong')
+      }   
     }
   })
   return (
@@ -41,7 +68,8 @@ function BookList() {
             <div className="col-9">
               <input type="text"
                 className="form-control"
-                id="title" placeholder="Title"
+                id="title"
+                placeholder="Title"
                 value={formik.values.title}
                 onChange={formik.handleChange}
                />
@@ -68,22 +96,6 @@ function BookList() {
           </div>
 
           <div className="mb-3 row">
-            <label htmlFor="thumbnail" className="form-label col-3">Photo: </label>
-            <div className="col-9">
-              <input type="file"
-                className="form-control"
-                id="thumbnail"
-                accept="image/*" 
-                value={formik.values.thumbnail}
-                onChange={formik.handleChange}
-               />
-                {
-                 formik.errors.thumbnail && <span className="text-danger">{formik.errors.thumbnail}.</span>
-                }
-            </div>   
-          </div>
-
-          <div className="mb-3 row">
             <label htmlFor="descriptions" className="form-label col-3">Descriptions: </label>
             <div className="col-9">
                <textarea id="descriptions" 
@@ -96,6 +108,54 @@ function BookList() {
                 </textarea>  
                 {
                  formik.errors.descriptions && <span className="text-danger">{formik.errors.descriptions}.</span>
+                }
+            </div>   
+          </div>
+
+          <div className="mb-3 row">
+            <label htmlFor="stocks" className="form-label col-3">Stocks: </label>
+            <div className="col-9">
+              <input type="number"
+                className="form-control"
+                id="stocks"
+                placeholder="Stocks"  
+                value={formik.values.stocks}
+                onChange={formik.handleChange}    
+               />  
+               {
+                formik.errors.stocks && <span className="text-danger">{formik.errors.stocks}</span>
+               }   
+            </div>   
+          </div>
+
+          <div className="mb-3 row">
+            <label htmlFor="genre" className="form-label col-3">Genre: </label>
+            <div className="col-9">
+              <input type="text"
+                className="form-control"
+                name="genre"
+                placeholder="Romance, Drama, Comedy, adventure, horror"    
+                value={formik.values.genre}
+                onChange={formik.handleChange}  
+               />   
+                {
+                formik.errors.genre && <span className="text-danger">{formik.errors.genre}</span>
+               }     
+            </div>   
+          </div>
+
+          <div className="mb-3 row">
+            <label htmlFor="thumbnail" className="form-label col-3">Photo: </label>
+            <div className="col-9">
+              <input type="file"
+                className="form-control"
+                id="thumbnail"
+                accept="image/*" 
+                value={formik.values.thumbnail}
+                onChange={formik.handleChange}
+               />
+                {
+                 formik.errors.thumbnail && <span className="text-danger">{formik.errors.thumbnail}.</span>
                 }
             </div>   
           </div>
