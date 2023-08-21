@@ -136,7 +136,15 @@ const HomePage = () => {
               id="Grid"
             >
               {books.length === 0 ? (
-                <div> No Data Found </div>
+                <div
+                  className="no-data"
+                  sx={{ display: "flex", width: "auto" }}
+                >
+                  <img
+                    src="https://learncab.com/assets/images/no-data-found.png"
+                    alt="No Data"
+                  />
+                </div>
               ) : (
                 <MultiActionAreaCard data={books} />
               )}
