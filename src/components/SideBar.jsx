@@ -21,6 +21,7 @@ const SideBar = ({ value, handleChangeRadio }) => {
         value={value}
         onChange={handleChangeRadio}
       >
+        <FormControlLabel value="all" control={<Radio />} label="All" />
         <FormControlLabel value="drama" control={<Radio />} label="Drama" />
         <FormControlLabel value="romance" control={<Radio />} label="Romance" />
         <FormControlLabel
