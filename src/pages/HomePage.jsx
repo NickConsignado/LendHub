@@ -19,31 +19,59 @@ const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setData] = useState(data.books);
 
+  //
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  //
+
   const [value, setValue] = React.useState("");
 
+  //
   const handleChangeRadio = (event) => {
-    setValue(event.target.value);
+    const selectedValue = event.target.value;
+
+    if (selectedValue === "all") {
+      setSelectedGenres([]);
+      setValue("all");
+    } else {
+      if (selectedGenres.includes("all")) {
+        setSelectedGenres([selectedValue]);
+        setValue(selectedValue);
+      } else {
+        setSelectedGenres([selectedValue]);
+        setValue(selectedValue);
+      }
+    }
   };
 
+  //
+
+  // -------Searchbooks---------//
   useEffect(() => {
-    if (value !== "") {
-      const searchBook = data.books.filter((item) => {
-        return (
-          item.genre.toLowerCase().includes(value) &&
-          item.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-      });
-      setData(searchBook);
-    } else {
-      setData(books);
-    }
-  });
+    const filteredBooks = data.books.filter((item) => {
+      if (selectedGenres.includes("all")) {
+        return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+      } else if (selectedGenres.length === 0) {
+        return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+      }
+      return (
+        selectedGenres.includes(item.genre.toLowerCase()) &&
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    });
+    setData(filteredBooks);
+  }, [selectedGenres, searchTerm]);
+
+  // -----------
+  const handleChangeAll = (event) => {
+    setIsDrama(event.target.checked);
+  };
+  // -----------
 
   const handleChangeDrama = (event) => {
     setIsDrama(event.target.checked);
   };
-  const handleChangeRomance = (event) => {
-    setIsRomance(event.target.checked);
+  const handleChangeHorror = (event) => {
+    setIsHorror(event.target.checked);
   };
   const handleChangeComedy = (event) => {
     setIsComedy(event.target.checked);
