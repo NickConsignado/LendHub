@@ -18,14 +18,9 @@ import Advertisement from "../components/Advertisement.jsx";
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [books, setData] = useState(data.books);
-
-  //
   const [selectedGenres, setSelectedGenres] = useState([]);
-  //
-
   const [value, setValue] = React.useState("");
 
-  //
   const handleChangeRadio = (event) => {
     const selectedValue = event.target.value;
 
