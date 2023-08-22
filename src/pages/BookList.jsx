@@ -1,4 +1,4 @@
-import { useFormik } from "formik"
+import { Formik, useFormik } from "formik"
 import * as Yup from "yup"
 import { Toast } from "bootstrap"
 import axios from "axios"
@@ -23,25 +23,26 @@ function BookList() {
       thumbnail: Yup.string().required("Book Name photo is required"),
     }),
     onSubmit: async (value) => {
-
+   console.log(value)
       try {
-        console.log(value)
         const res = await axios.post('http://localhost:8000/api/v1/books', {
             title: value.title,
             author: value.author,
-            descriptions: value.descriptions,
+            subtitle: value.descriptions,
             stocks: value.stocks,
             genre: value.genre,
             thumbnail: value.thumbnail,  
-          }, {
+          },   
+
+          {
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded'
             }
-        })
-         
-        if (res.status === 200) {
-          new Toast(document.getElementById('liveToast')).show() 
-        }
+          })
+         console.log(res.data)
+          if (res.status === 200) {
+            new Toast(document.getElementById('liveToast')).show()           
+          }
       } catch (err) {
           // show error
         console.log('something went wrong')
