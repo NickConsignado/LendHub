@@ -2,6 +2,7 @@ import { Formik, useFormik } from "formik"
 import * as Yup from "yup"
 import { Toast } from "bootstrap"
 import axios from "axios"
+import BookDetails from "./BookDetails"
 
 
 function BookList() {
@@ -31,12 +32,12 @@ function BookList() {
             subtitle: value.descriptions,
             stocks: value.stocks,
             genre: value.genre,
-            thumbnail: value.thumbnail,  
+            thumbnail: document.getElementById('thumbnail').files[0]  
           },   
 
           {
             headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
+              'Content-Type': 'multipart/form-data'
             }
           })
          console.log(res.data)
@@ -160,7 +161,7 @@ function BookList() {
                 }
             </div>   
           </div>
-
+       
           <div className="text-center">
             <button type="submit" className="btn btn-primary w-25">Create</button>
           </div>  
