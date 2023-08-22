@@ -16,22 +16,20 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 function Carousel() {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
-  const [carouselThumbnails, setCarouselThumbnails] = useState([]); // State for carousel thumbnails
-  const maxSteps = carouselThumbnails.length;
+  const [carouselimageUrls, setCarouselimageUrls] = useState([]); // State for carousel imageUrls
+  const maxSteps = carouselimageUrls.length;
 
   useEffect(() => {
-    const fetchCarouselThumbnails = async () => {
+    const fetchCarouselimageUrls = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/api/v1/carousel"
-        );
-        setCarouselThumbnails(response.data.data.map((item) => item.thumbnail)); // Set fetched carousel thumbnails to the state
+        const response = await axios.get("http://localhost:8000/api/v1/books");
+        setCarouselimageUrls(response.data.data.map((item) => item.imageUrl)); // Set fetched carousel imageUrls to the state
       } catch (error) {
-        console.error("Error fetching carousel thumbnails:", error);
+        console.error("Error fetching carousel imageUrls:", error);
       }
     };
 
-    fetchCarouselThumbnails();
+    fetchCarouselimageUrls();
   }, []);
 
   const handleNext = () => {
@@ -71,7 +69,7 @@ function Carousel() {
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {carouselThumbnails.map((thumbnail, index) => (
+        {carouselimageUrls.map((imageUrl, index) => (
           <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
@@ -83,7 +81,7 @@ function Carousel() {
                   overflow: "hidden",
                   width: "100%",
                 }}
-                src={thumbnail}
+                src={imageUrl}
                 alt={`Slide ${index + 1}`}
               />
             ) : null}
