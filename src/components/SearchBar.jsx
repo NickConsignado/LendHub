@@ -6,8 +6,13 @@ const SearchBar = ({ handleSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (event) => {
-    console.log("event", event);
-    setSearchTerm(event.target.defaultValue);
+    setSearchTerm(event.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch(searchTerm);
+    }
   };
 
   return (
@@ -26,6 +31,8 @@ const SearchBar = ({ handleSearch }) => {
         label="Search"
         value={searchTerm}
         onChange={handleChange}
+        onKeyPress={handleKeyPress}
+        sx={{ width: 300 }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
@@ -33,7 +40,6 @@ const SearchBar = ({ handleSearch }) => {
             </InputAdornment>
           ),
         }}
-        className=""
       />
     </Container>
   );

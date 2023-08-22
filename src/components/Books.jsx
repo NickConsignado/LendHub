@@ -30,7 +30,7 @@ const MultiActionAreaCard = () => {
         <Card
           key={item.id}
           sx={{
-            maxWidth: 250,
+            maxWidth: "20rem",
             marginBottom: "40px",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",
           }}
