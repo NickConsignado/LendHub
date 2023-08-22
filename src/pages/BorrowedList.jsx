@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -7,12 +7,23 @@ function BorrowedList() {
   const dispatch = useDispatch()
   const borrowedLists = useSelector(state => state.borrowedLists)
 
-
   const [items, setItems] = useState([]);
   const [borrowedBy, setBorrowedBy] = useState("");
   const [borrowedDate, setBorrowedDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
-  const [nameOfBook, setNameOfBook] = useState("");
+  const [bookId, setBookId] = useState("");
+  const [ data, setdata ] = useState([])
+
+const fetchData = async () => {
+  const res = await axios.get('http://localhost:8000/api/v1/borrowings');
+   setdata(res.data.data)
+   console.log(res.data)
+}
+
+useEffect(() => {
+  fetchData()
+}, [setdata])
+
 
   const addItem = async () => {
 
@@ -21,18 +32,20 @@ function BorrowedList() {
        borrowedBy,
        borrowedDate,
        returnDate,
-        }, {
+       bookId: 1
+        }, 
+        {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           }
       })
       if (res.status === 200) {
-        if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && nameOfBook.trim() !== "") {
+        if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && bookId.trim() !== "") {
           const newItem = {
             borrowedBy: borrowedBy,
             borrowedDate: borrowedDate,
             returnDate: returnDate,
-            nameOfBook: nameOfBook,
+            bookId: bookId,
           };
           setItems([...items, newItem]);
           resetForm('');
@@ -52,7 +65,7 @@ function BorrowedList() {
     setBorrowedBy("");
     setBorrowedDate("");
     setReturnDate("");
-    setNameOfBook("");
+    setbookId("");
   };
 
   return (
@@ -89,15 +102,12 @@ function BorrowedList() {
         </div>
         <div className="form-group"> 
         <label>Books</label>
-          <select className="form-select" defaultValue={nameOfBook} onChange={(e) => setNameOfBook(e.target.value)} aria-label="Default select example">
-            <option selected>Romance, Drama, Comedy, adventure, horror</option>
-            <option defaultValue="1">1</option>
-            <option defaultValue="2">2</option>
-            <option defaultValue="3">3</option>
-            <option defaultValue="3">4</option>
-            <option defaultValue="3">5</option>
-          </select>
-          
+        <input
+            type="text"
+            className="form-control"
+            value={bookId} 
+            onChange={(e) => setBookId(e.target.value)} 
+          />
         </div>
         <button className="btn btn-primary" onClick={addItem}>
           Add Item
@@ -108,18 +118,29 @@ function BorrowedList() {
               <th>Borrowed By</th>
               <th>Borrowed Date</th>
               <th>Return Date</th>
-              <th>Name of Book</th>
+              <th>Book Id</th>
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
-            {items.map((item, index) => (
-              <tr key={index}>
-                <td>{item.borrowedBy}</td>
-                <td>{item.borrowedDate}</td>
-                <td>{item.returnDate}</td>
-                <td>{item.nameOfBook}</td>
-                <td>
+          <tbody>   
+        
+           {
+              data.map((data) => (
+                <tr key={data.id}>
+                  <td>{data.borrowedBy}</td>
+                  <td>{data.borrowedDate}</td>
+                  <td>{data.returnDate}</td>
+                  <td>{data.bookId}</td>
+              </tr>
+               ))}  
+            {
+              items.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.borrowedBy}</td>
+                  <td>{item.borrowedDate}</td>
+                  <td>{item.returnDate}</td>
+                  <td>{item.bookId}</td>
+                  <td>
                   <button
                     className="btn btn-danger btn-sm"
                     onClick={() => removeItem(index)}
@@ -128,7 +149,7 @@ function BorrowedList() {
                   </button>
                 </td>
               </tr>
-            ))}
+            ))}       
           </tbody>
         </table>
       </div>
