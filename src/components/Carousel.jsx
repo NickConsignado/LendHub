@@ -23,9 +23,9 @@ function Carousel() {
     const fetchCarouselThumbnails = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/v1/carousel"
+          "http://localhost:8000/api/v1/books"
         );
-        setCarouselThumbnails(response.data.data.map((item) => item.thumbnail)); // Set fetched carousel thumbnails to the state
+        setCarouselThumbnails(response.data.data.map((item) => item.imageUrl)); // Set fetched carousel thumbnails to the state
       } catch (error) {
         console.error("Error fetching carousel thumbnails:", error);
       }

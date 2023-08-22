@@ -39,7 +39,7 @@ const MultiActionAreaCard = () => {
             <Link to="/book-info" style={{ textDecoration: "none" }}>
               <CardMedia
                 component="img"
-                image={item.thumbnail}
+                image={item.imageUrl}
                 alt="Book Thumbnail"
               />
               <CardContent>
