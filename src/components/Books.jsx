@@ -27,44 +27,20 @@ const MultiActionAreaCard = () => {
   const renderBookDetails = () => {
     return booksData.map((item) => {
       return (
-        <Card
-          key={item.id}
-          sx={{
-            maxWidth: "20rem",
-            marginBottom: "40px",
-            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",
-          }}
-        >
+        
+        <Card key={item.id} sx={{ maxWidth: "20rem", marginBottom: "40px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",}}>
           <CardActionArea>
             <Link to="/book-info" style={{ textDecoration: "none" }}>
-              <CardMedia
-                component="img"
-                image={item.imageUrl}
-                alt="Book Thumbnail"
-              />
+              <CardMedia component="img" image={item.imageUrl} alt="Book Thumbnail"/>
               <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="div"
-                  id="cardTitle"
-                >
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  id="cardDescription"
-                >
-                  Genre: {item.genre}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  id="cardDescription"
-                >
-                  Stocks: {item.stocks}
-                </Typography>
+                <Typography gutterBottom variant="h5" component="div" id="cardTitle" > 
+                {item.title}</Typography>
+
+                <Typography variant="body2" color="text.secondary" id="cardDescription">
+                  Genre: {item.genre}</Typography>
+                
+                <Typography variant="body2" color="text.secondary" id="cardDescription" >
+                  Stocks: {item.stocks}</Typography>
               </CardContent>
             </Link>
           </CardActionArea>
