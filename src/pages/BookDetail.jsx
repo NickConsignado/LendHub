@@ -112,6 +112,9 @@ function BookDetail () {
             </div>   
           </div>
 
+          <div className="text-center">
+            <button type="submit" className="btn btn-primary w-25">Create</button>
+          </div> 
         </form>
        </div>
     </>
