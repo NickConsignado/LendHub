@@ -11,7 +11,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./components/Theme.jsx"; // Import your theme
 import BookDetail from "./pages/BookDetail";
 
-
 function App() {
   return (
     <Provider store={store}>

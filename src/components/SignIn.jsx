@@ -51,10 +51,16 @@ function SignIn() {
         <Link to="/book" style={{ textDecoration: "none", color: "black" }}>
           <MenuItem onClick={handleClose}>Book List</MenuItem>
         </Link>
-        <Link to="/book-detail" style={{ textDecoration: "none", color: "black" }}>
+        <Link
+          to="/book-detail"
+          style={{ textDecoration: "none", color: "black" }}
+        >
           <MenuItem onClick={handleClose}>Book Detail</MenuItem>
-        </Link>       
+        </Link>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
+        {/* <Link to="/book-detail" style={{ textDecoration: "none", color: "black" }}>
+          <MenuItem onClick={handleClose}>Book Detail</MenuItem>
+        </Link>  */}
       </Menu>
     </div>
   );

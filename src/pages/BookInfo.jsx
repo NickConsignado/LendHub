@@ -5,10 +5,13 @@ import { useEffect, useState } from "react";
 
 function BookInfo() {
   const [booksInfo, setBooksInfo] = useState({});
+  const [booksDetail, setBooksDetails] = useState({});
 
   const fetchBooksInfo = async () => {
+    // ------------------------books-------------------------------------
+
     const res = await axios("http://localhost:8000/api/v1/books");
-    console.log(res.data.data[0]);
+
     const bookResult = res.data.data[0];
     const bookObj = {
       author: bookResult.author,
@@ -18,13 +21,34 @@ function BookInfo() {
       subtitle: bookResult.subtitle,
       title: bookResult.title,
     };
-
     setBooksInfo(bookObj);
   };
 
   useEffect(() => {
     fetchBooksInfo();
   }, []);
+
+  const fetchBooksDetails = async () => {
+    //----------------------------details------------------------------------
+
+    const response = await axios("http://localhost:8000/api/v1/book-details");
+
+    const bookOtherDetails = response.data.data[0];
+    const bookDetailsObj = {
+      awards: bookOtherDetails.literaryAwards,
+      pages: bookOtherDetails.pages,
+      characters: bookOtherDetails.characters,
+      published: bookOtherDetails.published,
+      setting: bookOtherDetails.setting,
+    };
+
+    setBooksDetails(bookDetailsObj);
+  };
+
+  useEffect(() => {
+    fetchBooksDetails();
+  }, []);
+
   return (
     <>
       <Link to="/">
@@ -43,27 +67,23 @@ function BookInfo() {
             <p className="text-center">{booksInfo.author}</p>
             <p className=" text-start">{booksInfo.subtitle}</p>
             <div className="text-start">
-              <p>309 pages, Hardcover</p>
-              <p>First published June 26, 1997</p>
+              <p>
+                <b>Pages:</b> {booksDetail.pages}
+              </p>
+              <p>
+                <b>Published date:</b> {booksDetail.published}
+              </p>
             </div>
             <div className="text-start">
-              <h5>Literary awards</h5>
-              <p></p>
-
-              <h5>Original Title</h5>
-              <p>Harry Potter and the Philosopher's Stone</p>
-
-              <h5>Series</h5>
-              <p>Harry Potter (#1)</p>
-
-              <h5>Setting</h5>
               <p>
-                London, England (, 1991), Hogwarts School of Witchcraft and
-                Wizardry (United Kingdom, 1991)
+                <b>Awards:</b> {booksDetail.awards}
               </p>
-
-              <h5>Characters</h5>
-              <p></p>
+              <p>
+                <b>Settings:</b> {booksDetail.setting}
+              </p>
+              <p>
+                <b>Characters:</b> {booksDetail.characters}
+              </p>
             </div>
           </ul>
         </div>
