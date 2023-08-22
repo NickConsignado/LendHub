@@ -1,15 +1,15 @@
-.Card > image {
-  height: 10rem;
+#card {
+  border-color: rgb(101, 70, 32, 0.3);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  opacity: 95%;
 }
 
-#cardTitle {
-  font-family: "Oswald", sans-serif;
-  color: #2f4d33;
+#title {
+  font-family: Oswald;
+  font-size: 1.5rem;
 }
 
-.button-wrapper {
-  display: flex;
-  justify-content: flex-start; /* Align to the left */
-  width: 100%; /* Full width of the card */
-  margin-top: auto; /* Push the button to the bottom */
+#image {
+  border-radius: 3%;
+  height: 14rem;
 }

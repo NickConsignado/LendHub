@@ -34,8 +34,10 @@ $box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   }
   #Grid {
-    grid-template-columns: repeat(1, 1fr);
     justify-items: center;
+    text-decoration: overline;
+    display: table-footer-group;
+    text-transform: capitalize;
   }
   #legitcard {
     justify-self: center;
@@ -59,7 +61,9 @@ $box-shadow-lg: 0 2rem 3rem rgba($black, 0.175);
     margin-left: 1.5rem;
   }
   #Grid {
-    grid-template-columns: repeat(4, 1fr);
+    text-decoration: overline;
+    display: table-footer-group;
+    text-transform: capitalize;
   }
   #legitcard {
     height: 40rem;

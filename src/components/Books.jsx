@@ -1,86 +1,38 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
 import { Link } from "react-router-dom";
-import axios from "axios"; // Import axios
 import "../../scss/books.scss";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
-const MultiActionAreaCard = () => {
-  const [booksData, setBooksData] = React.useState([]);
+const BookCard = (props) => {
+  const { title, imageUrl, author, id } = props;
 
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8000/api/v1/books");
-        setBooksData(response.data.data); // Set fetched data to the state
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const renderBookDetails = () => {
-    return booksData.map((item) => {
-      return (
-        <Card
-          key={item.id}
-          sx={{
-            maxWidth: "20rem",
-            marginBottom: "40px",
-            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",
-          }}
-        >
-          <CardActionArea>
-            <Link to="/book-info" style={{ textDecoration: "none" }}>
-              <CardMedia
-                component="img"
-                image={item.imageUrl}
-                alt="Book Thumbnail"
-              />
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  component="div"
-                  id="cardTitle"
-                >
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  id="cardDescription"
-                >
-                  Genre: {item.genre}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  id="cardDescription"
-                >
-                  Stocks: {item.stocks}
-                </Typography>
-              </CardContent>
-            </Link>
-          </CardActionArea>
-          <CardActions>
-            <div className="button-wrapper">
-              <Button size="small" color="primary">
-                <Link to="/book-info">View more</Link>
-              </Button>
-            </div>
-          </CardActions>
-        </Card>
-      );
-    });
-  };
-
-  return <>{renderBookDetails()}</>;
+  return (
+    <div
+      className="card container-fluid"
+      style={{ width: "17rem", objectFit: "cover", padding: "0" }}
+      id="card"
+      key={id}
+    >
+      <img
+        className="card-img-top"
+        src={imageUrl}
+        alt="Card image cap"
+        id="image"
+      />
+      <div className="card-body">
+        <h5 className="card-title" id="title">
+          {title}
+        </h5>
+        <p className="card-text" id="auth">
+          {author}
+        </p>
+        <Link to={`/book-info/${id}`}>
+          {" "}
+          <Button variant="contained">View more</Button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
-export default MultiActionAreaCard;
+export default BookCard;

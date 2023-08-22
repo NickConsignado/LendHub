@@ -2,16 +2,31 @@ import { Link, useParams } from "react-router-dom";
 import MyComponentyarn from "../components/Api.jsx";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Grid, Typography } from "@mui/material";
 
 function BookInfo() {
   const { id } = useParams();
-  const [booksInfo, setBooksInfo] = useState({});
-  const [booksDetail, setBooksDetails] = useState({});
+  const [booksInfo, setBooksInfo] = useState({
+    title: "",
+    imageUrl: "",
+    author: "",
+    subtitle: "",
+    stocks: "",
+    genre: "",
+    id: "",
+  });
+  const [booksDetail, setBooksDetails] = useState({
+    literaryAwards: "",
+    pages: "",
+    characters: "",
+    published: "",
+    setting: "",
+  });
 
   const fetchBooksInfo = async () => {
     // ------------------------books-------------------------------------
 
-    const res = await axios(`http://localhost:8000/api/v1/books`);
+    const res = await axios(`http://localhost:8000/api/v1/books?${id}`);
 
     const bookResult = res.data.data[0];
     const bookObj = {
@@ -25,7 +40,6 @@ function BookInfo() {
     };
     setBooksInfo(bookObj);
   };
-
   useEffect(() => {
     fetchBooksInfo();
   }, []);
@@ -33,11 +47,13 @@ function BookInfo() {
   const fetchBooksDetails = async () => {
     //----------------------------details------------------------------------
 
-    const response = await axios("http://localhost:8000/api/v1/book-details");
+    const response = await axios(
+      `http://localhost:8000/api/v1/book-details?${id}`
+    );
 
     const bookOtherDetails = response.data.data[0];
     const bookDetailsObj = {
-      awards: bookOtherDetails.literaryAwards,
+      literaryAwards: bookOtherDetails.literaryAwards,
       pages: bookOtherDetails.pages,
       characters: bookOtherDetails.characters,
       published: bookOtherDetails.published,
@@ -56,41 +72,41 @@ function BookInfo() {
       <Link to="/">
         <button className="btn btn-primary">Go back</button>
       </Link>
-      <main className=" flex-column  mt-5">
-        <div className="container d-flex flex-wrap ">
+      <br />
+      <div
+        container
+        className="container-fluid"
+        sx={{
+          gap: "20px",
+        }}
+      >
+        <div>
           <img
             src={booksInfo.imageUrl}
             className="col-lg-6 mb-5"
             alt="..."
-            style={{ width: "100%", height: "25rem" }}
+            style={{ width: "30%", height: "auto", maxHeight: "25rem" }}
           />
-          <ul className=" text-center flex-wrap">
-            <h3>{booksInfo.title}</h3>
-            <p className="text-center">{booksInfo.author}</p>
-            <p className=" text-start">{booksInfo.subtitle}</p>
-            <div className="text-start">
-              <p>
-                <b>Pages: </b>
-                {booksDetail.pages}
-              </p>
-              <p>
-                <b>Published: </b>
-                {booksDetail.published}
-              </p>
-            </div>
-            <div className="text-start">
-              <h5>Literary awards</h5>
-              <p>{booksDetail.awards}</p>
-
-              <h5>Setting</h5>
-              <p>{booksDetail.setting}</p>
-
-              <h5>Characters</h5>
-              <p>{booksDetail.characters}</p>
-            </div>
-          </ul>
+          <Typography variant="h3">{booksInfo.title}</Typography>
+          <Typography variant="body1" className="text-center">
+            {booksInfo.author}
+          </Typography>
+          <Typography variant="body1" className="text-start">
+            {booksInfo.subtitle}
+          </Typography>
+          <Typography>
+            <b>Pages:</b> {booksDetail.pages}
+          </Typography>
+          <Typography>
+            <b>Published:</b> {booksDetail.published}
+          </Typography>
+          <Typography variant="h5">Literary awards</Typography>
+          <Typography>{booksDetail.literaryAwards}</Typography>
+          {/* ... Other details ... */}
         </div>
-      </main>
+        <div></div>
+      </div>
+      ;
     </>
   );
 }

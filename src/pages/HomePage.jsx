@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Grid, Container, TextField, InputAdornment } from "@mui/material";
-import MultiActionAreaCard from "../components/Books.jsx";
+import BookCard from "../components/Books.jsx";
 import SearchBar from "../components/SearchBar.jsx";
 import Carousel from "../components/Carousel.jsx";
 import SideBar from "../components/SideBar.jsx";
@@ -13,6 +13,7 @@ const HomePage = () => {
   const [booksData, setBooksData] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [value, setValue] = useState("");
+  const [books, setBooks] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,29 +105,26 @@ const HomePage = () => {
               </Container>
             </div>
             <Carousel />
+            <br />
             <Grid
               container
               spacing={0.5}
               sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
                 padding: "1rem",
+                gap: "1rem",
+                rowGap: "1.5rem",
               }}
               id="Grid"
             >
-              {filteredBooks.length === 0 ? (
-                <div
-                  className="no-data"
-                  sx={{ display: "flex", width: "auto" }}
-                >
-                  <img
-                    src="https://learncab.com/assets/images/no-data-found.png"
-                    alt="No Data"
-                  />
-                </div>
-              ) : (
-                <MultiActionAreaCard data={filteredBooks} />
-              )}
+              {booksData.map((book) => (
+                <BookCard
+                  key={book.id}
+                  id={book.id}
+                  title={book.title}
+                  author={book.author}
+                  imageUrl={book.imageUrl}
+                />
+              ))}
             </Grid>
           </div>
         </div>
