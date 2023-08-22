@@ -7,21 +7,22 @@ function BorrowedList() {
   const dispatch = useDispatch()
   const borrowedLists = useSelector(state => state.borrowedLists)
 
- 
+  const [items, setItems] = useState([]);
   const [borrowedBy, setBorrowedBy] = useState("");
   const [borrowedDate, setBorrowedDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [bookId, setBookId] = useState("");
-  const [ data, setData ] = useState([])
+  const [ data, setdata ] = useState([])
 
- const fetchData = async () => {
-   const res = await axios.get('http://localhost:8000/api/v1/borrowings');
-    setData(res.data.data)
-   
- }
-  useEffect(() => {
-   fetchData()
- }, [setData])
+const fetchData = async () => {
+  const res = await axios.get('http://localhost:8000/api/v1/borrowings');
+   setdata(res.data.data)
+   console.log(res.data)
+}
+
+useEffect(() => {
+  fetchData()
+}, [setdata])
 
 
   const addItem = async () => {
@@ -31,33 +32,40 @@ function BorrowedList() {
        borrowedBy,
        borrowedDate,
        returnDate,
-       bookId: bookId
+       bookId: 1
         }, 
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           }
       })
-      
-      if (res.status === 201) {
-        setData([...data, res.data.data])
-        resetForm('');
+      if (res.status === 200) {
+        if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && bookId.trim() !== "") {
+          const newItem = {
+            borrowedBy: borrowedBy,
+            borrowedDate: borrowedDate,
+            returnDate: returnDate,
+            bookId: bookId,
+          };
+          setItems([...items, newItem]);
+          resetForm('');
+        }
       }
     } catch (err) {
-      console.log('something went wrong');
-    } 
+     console.log('something went wrong');
+      } 
   };
- 
+
   const removeItem  = (index) => {
-    const newData = data.filter((_, i) => i !== index);
-    setData(newData);
+    const newItems = items.filter((_, i) => i !== index);
+    setItems(newItems);
   };
 
   const resetForm = () => {
     setBorrowedBy("");
     setBorrowedDate("");
     setReturnDate("");
-    setBookId("");
+    setbookId("");
   };
 
   return (
@@ -93,7 +101,7 @@ function BorrowedList() {
           />
         </div>
         <div className="form-group"> 
-        <label>Books Id</label>
+        <label>Books</label>
         <input
             type="text"
             className="form-control"
@@ -101,8 +109,8 @@ function BorrowedList() {
             onChange={(e) => setBookId(e.target.value)} 
           />
         </div>
-        <button className="btn btn-primary mt-1" onClick={addItem}>
-          ADD
+        <button className="btn btn-primary" onClick={addItem}>
+          Add Item
         </button>
         <table className="table mt-3">
           <thead>
@@ -116,23 +124,32 @@ function BorrowedList() {
           </thead>
           <tbody>   
         
-            {
-              data.map((data, index) => (
+           {
+              data.map((data) => (
                 <tr key={data.id}>
                   <td>{data.borrowedBy}</td>
                   <td>{data.borrowedDate}</td>
                   <td>{data.returnDate}</td>
-                  <td>{data.bookId}</td>  
+                  <td>{data.bookId}</td>
+              </tr>
+               ))}  
+            {
+              items.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.borrowedBy}</td>
+                  <td>{item.borrowedDate}</td>
+                  <td>{item.returnDate}</td>
+                  <td>{item.bookId}</td>
                   <td>
                   <button
                     className="btn btn-danger btn-sm"
                     onClick={() => removeItem(index)}
                   >
-                    Delete
+                    Remove
                   </button>
-                </td>           
+                </td>
               </tr>
-               ))}   
+            ))}       
           </tbody>
         </table>
       </div>

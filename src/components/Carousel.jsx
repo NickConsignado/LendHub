@@ -16,20 +16,22 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 function Carousel() {
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
-  const [carouselimageUrls, setCarouselimageUrls] = useState([]); // State for carousel imageUrls
-  const maxSteps = carouselimageUrls.length;
+  const [carouselThumbnails, setCarouselThumbnails] = useState([]); // State for carousel thumbnails
+  const maxSteps = carouselThumbnails.length;
 
   useEffect(() => {
-    const fetchCarouselimageUrls = async () => {
+    const fetchCarouselThumbnails = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/v1/books");
-        setCarouselimageUrls(response.data.data.map((item) => item.imageUrl)); // Set fetched carousel imageUrls to the state
+        const response = await axios.get(
+          "http://localhost:8000/api/v1/carousel"
+        );
+        setCarouselThumbnails(response.data.data.map((item) => item.thumbnail)); // Set fetched carousel thumbnails to the state
       } catch (error) {
-        console.error("Error fetching carousel imageUrls:", error);
+        console.error("Error fetching carousel thumbnails:", error);
       }
     };
 
-    fetchCarouselimageUrls();
+    fetchCarouselThumbnails();
   }, []);
 
   const handleNext = () => {
@@ -58,7 +60,7 @@ function Carousel() {
         sx={{
           display: "flex",
           alignItems: "center",
-          height: "0.1rem",
+          height: 50,
           pl: 2,
           bgcolor: "background.default",
         }}
@@ -69,19 +71,19 @@ function Carousel() {
         onChangeIndex={handleStepChange}
         enableMouseEvents
       >
-        {carouselimageUrls.map((imageUrl, index) => (
+        {carouselThumbnails.map((thumbnail, index) => (
           <div key={index}>
             {Math.abs(activeStep - index) <= 2 ? (
               <Box
                 component="img"
                 sx={{
+                  height: 400,
                   display: "cover",
                   maxWidth: "auto",
                   overflow: "hidden",
                   width: "100%",
-                  height: "20rem",
                 }}
-                src={imageUrl}
+                src={thumbnail}
                 alt={`Slide ${index + 1}`}
               />
             ) : null}
