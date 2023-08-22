@@ -39,8 +39,6 @@ function BorrowedList() {
           }
       })
       
-      console.log(res.status)
-      console.log(res.data.data)
       if (res.status === 201) {
         setData([...data, res.data.data])
         resetForm('');
