@@ -1,27 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MyComponentyarn from "../components/Api.jsx";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 function BookInfo() {
+  const { id } = useParams();
   const [booksInfo, setBooksInfo] = useState({});
 
   const fetchBooksInfo = async () => {
-    const res = await axios("http://localhost:8000/api/v1/books");
-    console.log(res.data.data[0]);
+    const res = await axios(`http://localhost:8000/api/v1/books`);
+    const response = await axios(`http://localhost:8000/api/v1/book-details`);
+    console.log(response.data.data[0]);
+
+    const bookDetails = response.data.data[0];
     const bookResult = res.data.data[0];
     const bookObj = {
+      id: bookResult.id,
       title: bookResult.title,
       author: bookResult.author,
       subtitle: bookResult.subtitle,
       stocks: bookResult.stocks,
       genre: bookResult.genre,
       imageUrl: bookResult.imageUrl,
-      bookData: bookResult.bookData,
-      
-      
-      
-      
+        literaryAwards: bookDetails.literaryAwards,
+        setting: bookDetails.setting,
+        characters: bookDetails.characters,
+        pages: bookDetails.pages,
+        published: bookDetails.published,
+        publisher: bookDetails.publisher,
+
     };
 
     setBooksInfo(bookObj);
@@ -35,42 +42,32 @@ function BookInfo() {
       <Link to="/">
         <button className="btn btn-primary">Go back</button>
       </Link>
-      <main className="w-75 m-auto d-flex flex-column align-items-center mt-5 card">
-        <div className="container d-flex flex-wrap row justify-content-center">
+      <main className=" flex-column  mt-5">
+        <div className="container d-flex flex-wrap ">
           <img
             src={booksInfo.imageUrl}
-            className="card-img-top col-6"
+            className="col-lg-6 mb-5"
             alt="..."
-            style={{ width: "25rem" }}
+            style={{ width: "18rem", height: "25rem" }}
           />
-          <ul className=" text-center flex-wrap">
-            <h3>{booksInfo.title}</h3>
-            <p className="text-center">{booksInfo.author}</p>
-            <p className=" text-start">{booksInfo.subtitle}</p>
-            <div className="text-start">
-              <p>309 pages, Hardcover</p>
-              <p>First published June 26, 1997</p>
-            </div>
-            <div className="text-start">
-              <h5>Literary awards</h5>
-              <p></p>
+          <p className="position-absolute text-Primary border bg-light">
+            <b>Available: {booksInfo.stocks} </b>
+          </p>
 
-              <h5>Original Title</h5>
-              <p>Harry Potter and the Philosopher's Stone</p>
+          <div className="ms-lg-5 container-fluid flex-wrap col-lg-6">
+            <h1>{booksInfo.title}</h1>
+            <h3>By: {booksInfo.author}</h3>
+            <p>{booksInfo.subtitle}</p>
+            <dd>
+              <b>Genre:</b> {booksInfo.genre}
+            </dd>
 
-              <h5>Series</h5>
-              <p>Harry Potter (#1)</p>
-
-              <h5>Setting</h5>
-              <p>
-                London, England (, 1991), Hogwarts School of Witchcraft and
-                Wizardry (United Kingdom, 1991)
-              </p>
-
-              <h5>Characters</h5>
-              <p></p>
-            </div>
-          </ul>
+            <p><b>Literary Awards:</b> {booksInfo.literaryAwards}</p>
+            <p><b>Characters:</b> {booksInfo.characters}</p>
+            <p><b>Setting:</b> {booksInfo.setting}</p>
+            <p><b>Published:</b> {booksInfo.published}</p>
+            <p><b>Publisher:</b> {booksInfo.publisher}</p>
+          </div>
         </div>
       </main>
     </>
