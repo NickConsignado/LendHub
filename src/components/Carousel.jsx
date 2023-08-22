@@ -22,7 +22,9 @@ function Carousel() {
   useEffect(() => {
     const fetchCarouselThumbnails = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/v1/books");
+        const response = await axios.get(
+          "http://localhost:8000/api/v1/carousel"
+        );
         setCarouselThumbnails(response.data.data.map((item) => item.thumbnail)); // Set fetched carousel thumbnails to the state
       } catch (error) {
         console.error("Error fetching carousel thumbnails:", error);
@@ -58,7 +60,7 @@ function Carousel() {
         sx={{
           display: "flex",
           alignItems: "center",
-          height: "0.1rem",
+          height: 50,
           pl: 2,
           bgcolor: "background.default",
         }}
@@ -75,6 +77,7 @@ function Carousel() {
               <Box
                 component="img"
                 sx={{
+                  height: 400,
                   display: "cover",
                   maxWidth: "auto",
                   overflow: "hidden",

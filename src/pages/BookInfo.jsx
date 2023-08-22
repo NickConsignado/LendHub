@@ -11,12 +11,17 @@ function BookInfo() {
     console.log(res.data.data[0]);
     const bookResult = res.data.data[0];
     const bookObj = {
+      title: bookResult.title,
       author: bookResult.author,
+      subtitle: bookResult.subtitle,
+      stocks: bookResult.stocks,
       genre: bookResult.genre,
       imageUrl: bookResult.imageUrl,
-      stocks: bookResult.stocks,
-      subtitle: bookResult.subtitle,
-      title: bookResult.title,
+      bookData: bookResult.bookData,
+      
+      
+      
+      
     };
 
     setBooksInfo(bookObj);
@@ -30,13 +35,13 @@ function BookInfo() {
       <Link to="/">
         <button className="btn btn-primary">Go back</button>
       </Link>
-      <main className="w-100 d-flex flex-column align-items-center mt-5">
+      <main className="w-75 m-auto d-flex flex-column align-items-center mt-5 card">
         <div className="container d-flex flex-wrap row justify-content-center">
           <img
             src={booksInfo.imageUrl}
             className="card-img-top col-6"
             alt="..."
-            style={{ width: "15rem" }}
+            style={{ width: "25rem" }}
           />
           <ul className=" text-center flex-wrap">
             <h3>{booksInfo.title}</h3>
