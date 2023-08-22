@@ -28,7 +28,7 @@ const MultiActionAreaCard = () => {
     return booksData.map((item) => {
       return (
         
-        <Card key={item.id} sx={{ maxWidth: "20rem", marginBottom: "40px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",}}>
+        <Card key={item.id} sx={{ maxWidth: "20rem", marginBottom: "40px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.8)",}}>  
           <CardActionArea>
             <Link to="/book-info" style={{ textDecoration: "none" }}>
               <CardMedia component="img" image={item.imageUrl} alt="Book Thumbnail"/>

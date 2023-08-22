@@ -21,14 +21,8 @@ function BookDetail () {
   
   return (
     <>
-      {/* <div className="d-flex flex-column w-75 m-3 align-items-end">
-        <Link to="/book" className="btn btn-primary">
-        <i class="fa-solid fa-plus"></i>Book List
-        </Link>
-      </div> */}
-
       <div  className="d-flex flex-column align-items-center">
-      <h4 className=" my-3">Book Details</h4>
+        <h4 className=" my-3">Book Details</h4>
       <div className="toast-container position-fixed bottom-0 end-0 p-3">
           <div id="liveToast" className="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
             <div className="d-flex">
@@ -122,3 +116,14 @@ function BookDetail () {
 }
 
 export default BookDetail
+
+
+
+
+
+
+   {/* <div className="d-flex flex-column w-75 m-3 align-items-end">
+        <Link to="/book" className="btn btn-primary">
+        <i class="fa-solid fa-plus"></i>Book List
+        </Link>
+      </div> */}
