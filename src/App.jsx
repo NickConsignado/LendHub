@@ -9,7 +9,7 @@ import store from "./store/store";
 import BookList from "./pages/BookList";
 import { ThemeProvider } from "@mui/material/styles";
 import Theme from "./components/Theme.jsx"; // Import your theme
-import axios from 'axios';
+import BookDetail from "./pages/BookDetail";
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
             <Route path="/book-info" element={<BookInfo />} />
             <Route path="/borrowed-list" element={<BorrowedList />} />
             <Route path="/book" element={<BookList />} />
+            <Route path="/book-detail" element={<BookDetail />} />
           </Routes>
           <Footer />
         </BrowserRouter>

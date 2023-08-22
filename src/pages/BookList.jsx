@@ -2,7 +2,7 @@ import { Formik, useFormik } from "formik"
 import * as Yup from "yup"
 import { Toast } from "bootstrap"
 import axios from "axios"
-import BookDetails from "./BookDetails"
+import BookDetails from "./BookDetail"
 
 
 function BookList() {
