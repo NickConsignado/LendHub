@@ -7,22 +7,21 @@ function BorrowedList() {
   const dispatch = useDispatch()
   const borrowedLists = useSelector(state => state.borrowedLists)
 
-  const [items, setItems] = useState([]);
   const [borrowedBy, setBorrowedBy] = useState("");
   const [borrowedDate, setBorrowedDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [bookId, setBookId] = useState("");
-  const [ data, setdata ] = useState([])
+  const [ Data, setData ] = useState([])
 
 const fetchData = async () => {
   const res = await axios.get('http://localhost:8000/api/v1/borrowings');
-   setdata(res.data.data)
-   console.log(res.data)
+   setData(res.data.data)
+  
 }
 
 useEffect(() => {
   fetchData()
-}, [setdata])
+}, [setData])
 
 
   const addItem = async () => {
@@ -32,7 +31,7 @@ useEffect(() => {
        borrowedBy,
        borrowedDate,
        returnDate,
-       bookId: 1
+       bookId: bookId
         }, 
         {
           headers: {
@@ -40,16 +39,10 @@ useEffect(() => {
           }
       })
       if (res.status === 200) {
-        if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && bookId.trim() !== "") {
-          const newItem = {
-            borrowedBy: borrowedBy,
-            borrowedDate: borrowedDate,
-            returnDate: returnDate,
-            bookId: bookId,
-          };
-          setItems([...items, newItem]);
-          resetForm('');
-        }
+       
+        setData([...Data, res.data.data])
+        resetForm('');
+        
       }
     } catch (err) {
      console.log('something went wrong');
@@ -57,15 +50,15 @@ useEffect(() => {
   };
 
   const removeItem  = (index) => {
-    const newItems = items.filter((_, i) => i !== index);
-    setItems(newItems);
+    const newData = Data.filter((_, i) => i !== index);
+    setData(newData);
   };
 
   const resetForm = () => {
     setBorrowedBy("");
     setBorrowedDate("");
     setReturnDate("");
-    setbookId("");
+    setBookId("");
   };
 
   return (
@@ -101,7 +94,7 @@ useEffect(() => {
           />
         </div>
         <div className="form-group"> 
-        <label>Books</label>
+        <label>Books Id</label>
         <input
             type="text"
             className="form-control"
@@ -109,8 +102,8 @@ useEffect(() => {
             onChange={(e) => setBookId(e.target.value)} 
           />
         </div>
-        <button className="btn btn-primary" onClick={addItem}>
-          Add Item
+        <button className="btn btn-primary mt-1" onClick={addItem}>
+          ADD
         </button>
         <table className="table mt-3">
           <thead>
@@ -125,31 +118,23 @@ useEffect(() => {
           <tbody>   
         
            {
-              data.map((data) => (
-                <tr key={data.id}>
-                  <td>{data.borrowedBy}</td>
-                  <td>{data.borrowedDate}</td>
-                  <td>{data.returnDate}</td>
-                  <td>{data.bookId}</td>
-              </tr>
-               ))}  
-            {
-              items.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.borrowedBy}</td>
-                  <td>{item.borrowedDate}</td>
-                  <td>{item.returnDate}</td>
-                  <td>{item.bookId}</td>
+              Data.map((Data, index) => (
+                <tr key={Data.id}>
+                  <td>{Data.borrowedBy}</td>
+                  <td>{Data.borrowedDate}</td>
+                  <td>{Data.returnDate}</td>
+                  <td>{Data.bookId}</td>
                   <td>
                   <button
                     className="btn btn-danger btn-sm"
                     onClick={() => removeItem(index)}
                   >
-                    Remove
+                    Delete
                   </button>
-                </td>
+                </td> 
               </tr>
-            ))}       
+               ))}  
+            
           </tbody>
         </table>
       </div>
