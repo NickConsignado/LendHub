@@ -2,159 +2,137 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-
 function BorrowedList() {
-  const dispatch = useDispatch()
-  const borrowedLists = useSelector(state => state.borrowedLists)
+  const dispatch = useDispatch();
+  const borrowedLists = useSelector((state) => state.borrowedLists);
 
-  const [items, setItems] = useState([]);
   const [borrowedBy, setBorrowedBy] = useState("");
   const [borrowedDate, setBorrowedDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [bookId, setBookId] = useState("");
-  const [ data, setdata ] = useState([])
+  const [Data, setData] = useState([]);
 
-const fetchData = async () => {
-  const res = await axios.get('http://localhost:8000/api/v1/borrowings');
-   setdata(res.data.data)
-   console.log(res.data)
-}
-
-useEffect(() => {
-  fetchData()
-}, [setdata])
-
-
-  const addItem = async () => {
-
-    try {
-      const res = await axios.post('http://localhost:8000/api/v1/borrowings', {
-       borrowedBy,
-       borrowedDate,
-       returnDate,
-       bookId: 1
-        }, 
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-      })
-      if (res.status === 200) {
-        if (borrowedBy.trim() !== "" && borrowedDate.trim() !== "" && returnDate.trim() !== "" && bookId.trim() !== "") {
-          const newItem = {
-            borrowedBy: borrowedBy,
-            borrowedDate: borrowedDate,
-            returnDate: returnDate,
-            bookId: bookId,
-          };
-          setItems([...items, newItem]);
-          resetForm('');
-        }
-      }
-    } catch (err) {
-     console.log('something went wrong');
-      } 
+  const fetchData = async () => {
+    const res = await axios.get("http://localhost:8000/api/v1/borrowings");
+    setData(res.data.data);
   };
 
-  const removeItem  = (index) => {
-    const newItems = items.filter((_, i) => i !== index);
-    setItems(newItems);
+  useEffect(() => {
+    fetchData();
+  }, [setData]);
+
+  const addItem = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/borrowings",
+        {
+          borrowedBy,
+          borrowedDate,
+          returnDate,
+          bookId: bookId,
+        },
+        {
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        }
+      );
+      if (res.status === 200) {
+        setData([...Data, res.data.data]);
+        resetForm("");
+      }
+    } catch (err) {
+      console.log("something went wrong");
+    }
+  };
+
+  const removeItem = (index) => {
+    const newData = Data.filter((_, i) => i !== index);
+    setData(newData);
   };
 
   const resetForm = () => {
     setBorrowedBy("");
     setBorrowedDate("");
     setReturnDate("");
-    setbookId("");
+    setBookId("");
   };
-
   return (
-  <>
-    <div className="App">
-      <div className="container table table-striped mt-5">
-        <h1>Borrowed Items List</h1>
-        <div className="form-group">
-          <label>Borrowed By</label>
-          <input
-            type="text"
-            className="form-control"
-            value={borrowedBy}
-            onChange={(e) => setBorrowedBy(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Borrowed Date</label>
-          <input
-            type="date"
-            className="form-control"
-            value={borrowedDate}
-            onChange={(e) => setBorrowedDate(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Return Date</label>
-          <input
-            type="date"
-            className="form-control"
-            value={returnDate}
-            onChange={(e) => setReturnDate(e.target.value)}
-          />
-        </div>
-        <div className="form-group"> 
-        <label>Books</label>
-        <input
-            type="text"
-            className="form-control"
-            value={bookId} 
-            onChange={(e) => setBookId(e.target.value)} 
-          />
-        </div>
-        <button className="btn btn-primary" onClick={addItem}>
-          Add Item
-        </button>
-        <table className="table mt-3">
-          <thead>
-            <tr>
-              <th>Borrowed By</th>
-              <th>Borrowed Date</th>
-              <th>Return Date</th>
-              <th>Book Id</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>   
-        
-           {
-              data.map((data) => (
-                <tr key={data.id}>
-                  <td>{data.borrowedBy}</td>
-                  <td>{data.borrowedDate}</td>
-                  <td>{data.returnDate}</td>
-                  <td>{data.bookId}</td>
+    <>
+      <div className="App">
+        <div className="container table table-striped mt-5">
+          <h1>Borrowed Items List</h1>
+          <div className="form-group">
+            <label>Borrowed By</label>
+            <input
+              type="text"
+              className="form-control"
+              value={borrowedBy}
+              onChange={(e) => setBorrowedBy(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label>Borrowed Date</label>
+            <input
+              type="date"
+              className="form-control"
+              value={borrowedDate}
+              onChange={(e) => setBorrowedDate(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label>Return Date</label>
+            <input
+              type="date"
+              className="form-control"
+              value={returnDate}
+              onChange={(e) => setReturnDate(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label>Books Id</label>
+            <input
+              type="text"
+              className="form-control"
+              value={bookId}
+              onChange={(e) => setBookId(e.target.value)}
+            />
+          </div>
+          <button className="btn btn-primary mt-1" onClick={addItem}>
+            ADD
+          </button>
+          <table className="table mt-3">
+            <thead>
+              <tr>
+                <th>Borrowed By</th>
+                <th>Borrowed Date</th>
+                <th>Return Date</th>
+                <th>Book Id</th>
+                <th>Action</th>
               </tr>
-               ))}  
-            {
-              items.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.borrowedBy}</td>
-                  <td>{item.borrowedDate}</td>
-                  <td>{item.returnDate}</td>
-                  <td>{item.bookId}</td>
+            </thead>
+            <tbody>
+              {Data.map((Data, index) => (
+                <tr key={Data.id}>
+                  <td>{Data.borrowedBy}</td>
+                  <td>{Data.borrowedDate}</td>
+                  <td>{Data.returnDate}</td>
+                  <td>{Data.bookId}</td>
                   <td>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => removeItem(index)}
-                  >
-                    Remove
-                  </button>
-                </td>
-              </tr>
-            ))}       
-          </tbody>
-        </table>
+                    <button
+                      className="btn btn-danger btn-sm"
+                      onClick={() => removeItem(index)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-  </>  
+    </>
   );
 }
 

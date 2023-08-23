@@ -1,34 +1,34 @@
-import { Link, useParams } from "react-router-dom";
-import MyComponentyarn from "../components/Api.jsx";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Grid, Typography } from "@mui/material";
 
 function BookInfo() {
   const { id } = useParams();
   const [booksInfo, setBooksInfo] = useState({
+    id: "",
     title: "",
-    imageUrl: "",
     author: "",
     subtitle: "",
     stocks: "",
     genre: "",
-    id: "",
-  });
-  const [booksDetail, setBooksDetails] = useState({
+    imageUrl: "",
     literaryAwards: "",
-    pages: "",
-    characters: "",
-    published: "",
     setting: "",
+    characters: "",
+    pages: "",
+    published: "",
+    publisher: "",
   });
 
   const fetchBooksInfo = async () => {
-    // ------------------------books-------------------------------------
+    const res = await axios(`http://localhost:8000/api/v1/books/${id}`);
+    const response = await axios(
+      `http://localhost:8000/api/v1/book-details/${id}`
+    );
+    console.log(response.data.data[0]);
 
-    const res = await axios(`http://localhost:8000/api/v1/books?${id}`);
-
-    const bookResult = res.data.data[0];
+    const bookDetails = response.data.data;
+    const bookResult = res.data.data;
     const bookObj = {
       id: bookResult.id,
       title: bookResult.title,
@@ -37,76 +37,60 @@ function BookInfo() {
       stocks: bookResult.stocks,
       genre: bookResult.genre,
       imageUrl: bookResult.imageUrl,
+      literaryAwards: bookDetails.literaryAwards,
+      setting: bookDetails.setting,
+      characters: bookDetails.characters,
+      pages: bookDetails.pages,
+      published: bookDetails.published,
+      publisher: bookDetails.publisher,
     };
+
     setBooksInfo(bookObj);
   };
+
   useEffect(() => {
     fetchBooksInfo();
   }, []);
-
-  const fetchBooksDetails = async () => {
-    //----------------------------details------------------------------------
-
-    const response = await axios(
-      `http://localhost:8000/api/v1/book-details?${id}`
-    );
-
-    const bookOtherDetails = response.data.data[0];
-    const bookDetailsObj = {
-      literaryAwards: bookOtherDetails.literaryAwards,
-      pages: bookOtherDetails.pages,
-      characters: bookOtherDetails.characters,
-      published: bookOtherDetails.published,
-      setting: bookOtherDetails.setting,
-    };
-
-    setBooksDetails(bookDetailsObj);
-  };
-
-  useEffect(() => {
-    fetchBooksDetails();
-  }, []);
-
   return (
     <>
-      <Link to="/">
-        <button className="btn btn-primary">Go back</button>
-      </Link>
-      <br />
-      <div
-        container
-        className="container-fluid"
-        sx={{
-          gap: "20px",
-        }}
-      >
-        <div>
+      <main className=" flex-column  mt-5">
+        <div className="container d-flex flex-wrap ">
           <img
             src={booksInfo.imageUrl}
             className="col-lg-6 mb-5"
             alt="..."
-            style={{ width: "30%", height: "auto", maxHeight: "25rem" }}
+            style={{ width: "18rem", height: "25rem" }}
           />
-          <Typography variant="h3">{booksInfo.title}</Typography>
-          <Typography variant="body1" className="text-center">
-            {booksInfo.author}
-          </Typography>
-          <Typography variant="body1" className="text-start">
-            {booksInfo.subtitle}
-          </Typography>
-          <Typography>
-            <b>Pages:</b> {booksDetail.pages}
-          </Typography>
-          <Typography>
-            <b>Published:</b> {booksDetail.published}
-          </Typography>
-          <Typography variant="h5">Literary awards</Typography>
-          <Typography>{booksDetail.literaryAwards}</Typography>
-          {/* ... Other details ... */}
+          <p className="position-absolute text-Primary border bg-light">
+            <b>Available: {booksInfo.stocks} </b>
+          </p>
+
+          <div className="ms-lg-5 container-fluid flex-wrap col-lg-6">
+            <h1>{booksInfo.title}</h1>
+            <h3>By: {booksInfo.author}</h3>
+            <p>{booksInfo.subtitle}</p>
+            <dd>
+              <b>Genre:</b> {booksInfo.genre}
+            </dd>
+
+            <p>
+              <b>Literary Awards:</b> {booksInfo.literaryAwards}
+            </p>
+            <p>
+              <b>Characters:</b> {booksInfo.characters}
+            </p>
+            <p>
+              <b>Setting:</b> {booksInfo.setting}
+            </p>
+            <p>
+              <b>Published:</b> {booksInfo.published}
+            </p>
+            <p>
+              <b>Publisher:</b> {booksInfo.publisher}
+            </p>
+          </div>
         </div>
-        <div></div>
-      </div>
-      ;
+      </main>
     </>
   );
 }
