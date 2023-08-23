@@ -59,7 +59,14 @@ function BookInfo() {
             src={booksInfo.imageUrl}
             className="col-lg-6 mb-5"
             alt="..."
-            style={{ width: "26rem", height: "25rem", margin: "5rem" }}
+            style={{
+              width: "26rem",
+              height: "25rem",
+              margin: "5rem",
+              borderRadius: "0.3rem",
+              borderColor: "rgba(101, 70, 32, 0.3)", // Added quotes around rgba value
+              boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)", // Added quotes around box-shadow value
+            }}
           />
           <p className="position-absolute text-Primary border bg-light">
             <b style={{ borderTop: "2rem" }}>Available: {booksInfo.stocks} </b>
@@ -68,7 +75,7 @@ function BookInfo() {
           <div className="ms-lg-5 container-fluid flex-wrap col-lg-6">
             <br />
             <br />
-            <h1>{booksInfo.title}</h1>
+            <h1 style={{ textTransform: "capitalize" }}>{booksInfo.title}</h1>
             <h3>By: {booksInfo.author}</h3>
             <p>{booksInfo.subtitle}</p>
             <dd>
