@@ -56,6 +56,7 @@ function BorrowedList() {
     setBorrowedDate("");
     setReturnDate("");
     setBookId("");
+    setBookId("");
   };
   return (
     <>
