@@ -59,13 +59,15 @@ function BookInfo() {
             src={booksInfo.imageUrl}
             className="col-lg-6 mb-5"
             alt="..."
-            style={{ width: "18rem", height: "25rem" }}
+            style={{ width: "26rem", height: "25rem", margin: "5rem" }}
           />
           <p className="position-absolute text-Primary border bg-light">
-            <b>Available: {booksInfo.stocks} </b>
+            <b style={{ borderTop: "2rem" }}>Available: {booksInfo.stocks} </b>
           </p>
 
           <div className="ms-lg-5 container-fluid flex-wrap col-lg-6">
+            <br />
+            <br />
             <h1>{booksInfo.title}</h1>
             <h3>By: {booksInfo.author}</h3>
             <p>{booksInfo.subtitle}</p>
